@@ -1,6 +1,6 @@
 # Chinmaya Kumar Das
 
-Personal website and portfolio.
+Personal website and portfolio Website.
 
 Built with Next.js, TypeScript, and Tailwind CSS.
 
