@@ -1,10 +1,17 @@
 import type { NextConfig } from "next";
 
+const isGitHubPagesBuild = process.env.GITHUB_PAGES === "true";
+
 const nextConfig: NextConfig = {
-  output: "export",
+  ...(isGitHubPagesBuild && {
+    output: "export",
+  }),
 
   images: {
-    unoptimized: true,
+    ...(isGitHubPagesBuild && {
+      unoptimized: true,
+    }),
+
     remotePatterns: [
       {
         protocol: "https",
