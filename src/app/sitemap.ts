@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
+export const dynamic = "force-static";
 
-const BASE_URL = "https://chinmayakumardas.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const BASE_URL = "https://chinmayakumardas.com";
   const now = new Date();
 
   return [
