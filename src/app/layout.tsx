@@ -8,8 +8,8 @@ import { siteConfig } from "@/data/site";
 
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const manrope = Geist({
+  variable: "--font-manrope",
   subsets: ["latin"],
 });
 
@@ -150,9 +150,10 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${manrope.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        
         <GoogleTagManager gtmId="GTM-KRK7ZQZC" />
 
         <script

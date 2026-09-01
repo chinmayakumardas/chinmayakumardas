@@ -1,80 +1,74 @@
+// import Image from "next/image";
+// import { ArrowUpRight } from "lucide-react";
+
+// export default function Home() {
+//   return (
+//     <main>
+//       <section className="min-h-screen">
+//         <div className="container-portfolio flex min-h-screen flex-col">
+
+      
+
+//           {/* Hero */}
+//           <div className="grid flex-1 items-end gap-12 pb-8 pt-20 md:grid-cols-12 md:pb-12 md:pt-24">
+
+//             {/* Typography */}
+//             <div className="md:col-span-8">
+//               <p className="mb-6 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
+//                 AI Engineer / Full Stack Developer
+//               </p>
+
+//               <h1 className="max-w-6xl text-[clamp(3.5rem,8vw,8rem)] font-medium leading-[0.88] tracking-[-0.065em]">
+//                 AI Building digital
+//                 <br />
+//                 experiences
+//                 <br />
+//                 with intelligence.
+//               </h1>
+
+//               <div className="mt-10 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+//                 <p className="max-w-md text-small leading-relaxed text-muted-foreground ">
+//                   I design and build intelligent products, scalable web
+//                   applications, and thoughtful digital experiences.
+//                 </p>
+
+//                 <a
+//                   href="/projects"
+//                   className="group inline-flex w-fit items-center gap-2 text-sm font-medium"
+//                 >
+//                   View selected work
+//                   <ArrowUpRight
+//                     className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+//                     aria-hidden="true"
+//                   />
+//                 </a>
+//               </div>
+//             </div>
+
+//             {/* Image */}
+//             <div className="md:col-span-4 md:pb-2">
+//               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-muted">
+//                 <Image
+//                   src="/images/hero.jpg"
+//                   alt="Chinmaya Kumar Das"
+//                   fill
+//                   priority
+//                   sizes="(max-width: 768px) 100vw, 33vw"
+//                   className="object-cover"
+//                 />
+//               </div>
+//             </div>
+//           </div>
+
+//         </div>
+//       </section>
+//     </main>
+//   );
+// }
+
+
+import { Hero } from "@/components/sections/home/hero";
+
 export default function Home() {
-  return (
-    <main className="min-h-screen bg-zinc-950 text-white">
-      {/* Hero */}
-      <section className="relative flex min-h-screen w-full items-center overflow-hidden px-6 py-20">
-        {/* Background decoration */}
-        <div className="absolute -left-32 -top-32 h-96 w-96 rounded-full bg-purple-600/30 blur-3xl" />
-        <div className="absolute -bottom-32 right-0 h-96 w-96 rounded-full bg-cyan-500/30 blur-3xl" />
-        <div className="absolute left-1/2 top-1/3 h-72 w-72 rounded-full bg-pink-500/20 blur-3xl" />
-
-        <div className="relative z-10 w-full">
-          <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-cyan-400">
-            Hello, I&apos;m
-          </p>
-
-          <h1 className="max-w-5xl text-5xl font-bold tracking-tight sm:text-7xl lg:text-8xl">
-            Chinmaya Kumar Das
-          </h1>
-
-          <p className="mt-8 max-w-3xl text-xl leading-8 text-zinc-300 sm:text-2xl">
-            Frontend Developer specializing in{" "}
-            <span className="font-semibold text-cyan-400">Next.js</span>,{" "}
-            <span className="font-semibold text-purple-400">React</span>, and{" "}
-            <span className="font-semibold text-pink-400">TypeScript</span>.
-          </p>
-
-          <div className="mt-10 flex flex-wrap gap-4">
-            <a
-              href="#projects"
-              className="rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 px-7 py-3.5 text-sm font-semibold text-white transition hover:scale-105"
-            >
-              View Projects
-            </a>
-
-            <a
-              href="#contact"
-              className="rounded-full border border-white/20 bg-white/5 px-7 py-3.5 text-sm font-semibold backdrop-blur transition hover:bg-white/10"
-            >
-              Contact Me
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* About */}
-      <section id="about" className="w-full border-t border-white/10 bg-zinc-900">
-        <div className="w-full px-6 py-24">
-          <h2 className="text-3xl font-semibold">About</h2>
-
-          <p className="mt-6 max-w-2xl leading-8 text-zinc-400">
-            I build modern, responsive, and scalable web applications with
-            Next.js, React, TypeScript, and modern web technologies.
-          </p>
-        </div>
-      </section>
-
-      {/* Projects */}
-      <section id="projects" className="w-full border-t border-white/10 bg-zinc-950">
-        <div className="w-full px-6 py-24">
-          <h2 className="text-3xl font-semibold">Projects</h2>
-
-          <p className="mt-4 text-zinc-400">
-            Projects will be added here.
-          </p>
-        </div>
-      </section>
-
-      {/* Contact */}
-      <section id="contact" className="w-full border-t border-white/10 bg-zinc-900">
-        <div className="w-full px-6 py-24">
-          <h2 className="text-3xl font-semibold">Contact</h2>
-
-          <p className="mt-4 text-zinc-400">
-            Feel free to get in touch.
-          </p>
-        </div>
-      </section>
-    </main>
-  );
+  return <Hero />;
 }
