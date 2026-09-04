@@ -1,10 +1,13 @@
 "use client";
 
 import * as React from "react";
+import { usePathname } from "next/navigation";
+import gsap from "gsap";
 import { cn } from "@/lib/utils";
 import { LenisProvider } from "@/components/providers/lenis-provider";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { Cursor } from "@/components/layout/cursor";
 
 export interface PageShellProps {
   children: React.ReactNode;
@@ -13,6 +16,9 @@ export interface PageShellProps {
 
 export function PageShell({ children, className }: PageShellProps) {
   const scrollRef = React.useRef<HTMLDivElement>(null);
+  const pageRef = React.useRef<HTMLDivElement>(null);
+  const transitionRef = React.useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
   const [showHeader, setShowHeader] = React.useState(true);
 
   React.useEffect(() => {
@@ -51,6 +57,28 @@ export function PageShell({ children, className }: PageShellProps) {
     };
   }, []);
 
+  React.useLayoutEffect(() => {
+    const page = pageRef.current;
+    const transition = transitionRef.current;
+
+    if (!page || !transition) return;
+
+    const context = gsap.context(() => {
+      gsap.fromTo(
+        page,
+        { y: 18, opacity: 0.7 },
+        { y: 0, opacity: 1, duration: 0.55, ease: "power3.out" },
+      );
+      gsap.fromTo(
+        transition,
+        { scaleY: 1, transformOrigin: "top" },
+        { scaleY: 0, duration: 0.65, delay: 0.05, ease: "power4.inOut" },
+      );
+    });
+
+    return () => context.revert();
+  }, [pathname]);
+
   return (
     <main
       className={cn(
@@ -58,6 +86,8 @@ export function PageShell({ children, className }: PageShellProps) {
         className,
       )}
     >
+      <Cursor />
+      <div ref={transitionRef} className="page-transition" aria-hidden="true" />
       <LenisProvider wrapperRef={scrollRef}>
         <div
           ref={scrollRef}
@@ -74,7 +104,7 @@ export function PageShell({ children, className }: PageShellProps) {
           </div>
 
           {/* Page Content */}
-          <div className="flex min-h-0 flex-1 flex-col">
+          <div ref={pageRef} className="flex min-h-0 flex-1 flex-col">
             {children}
             <Footer />
           </div>

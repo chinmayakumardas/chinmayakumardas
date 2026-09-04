@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { motion } from "motion/react";
+import { FiArrowUpRight } from "react-icons/fi";
 import { MobileMenu } from "./mobileMenu";
 
 const NAV = [
@@ -32,36 +34,42 @@ export function Header() {
               <path d="M12 2v20M3 7l9 5 9-5" />
             </svg>
 
-            <span className="header-logo-name hidden sm:inline uppercase">
-              Chinmaya Kumar
-            </span>
+            <span className="header-logo-name uppercase">Chinmaya Kumar</span>
           </Link>
         </div>
 
-        <nav className="header-row hidden grid-cols-5 md:grid">
+        <motion.nav
+          initial={{ opacity: 0, y: -6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45, ease: "easeOut" }}
+          className="header-row hidden grid-cols-5 md:grid"
+        >
           {NAV.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={`header-cell ${item.label === "Contact us" ? "text-brand" : ""}`}
+              className={`header-cell ${item.label === "Contact us" ? "header-cell-contact" : ""}`}
             >
               {item.label}
 
               {item.label === "Contact us" && (
-                <span aria-hidden="true" className="header-arrow">
-                  →
-                </span>
+                <FiArrowUpRight
+                  aria-hidden="true"
+                  className="header-arrow"
+                  size={16}
+                  strokeWidth={1.4}
+                />
               )}
             </Link>
           ))}
-        </nav>
+        </motion.nav>
 
         <div className="flex justify-end md:hidden">
           <MobileMenu open={open} onOpenChange={setOpen} />
         </div>
       </div>
 
-      {open && <MobileMenu open={open} onOpenChange={setOpen} panel />}
+      <MobileMenu open={open} onOpenChange={setOpen} panel />
     </header>
   );
 }

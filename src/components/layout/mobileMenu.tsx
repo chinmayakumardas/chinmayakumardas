@@ -1,5 +1,7 @@
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { FiChevronRight, FiMenu, FiX } from "react-icons/fi";
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
 import { Button } from "@/components/ui";
 
 const MOBILE_NAV = [
@@ -20,6 +22,43 @@ export function MobileMenu({
   onOpenChange,
   panel = false,
 }: MobileMenuProps) {
+  const panelRef = useRef<HTMLElement>(null);
+
+  useLayoutEffect(() => {
+    if (!panel) return;
+
+    const panelElement = panelRef.current;
+    if (!panelElement) return;
+
+    const context = gsap.context(() => {
+      gsap.to(panelElement, {
+        height: open ? "auto" : 0,
+        opacity: open ? 1 : 0,
+        duration: 0.5,
+        ease: "power3.out",
+        overwrite: true,
+      });
+
+      if (open) {
+        gsap.fromTo(
+          ".mobile-menu-item",
+          { y: -10, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.35,
+            stagger: 0.045,
+            delay: 0.08,
+            ease: "power2.out",
+            overwrite: true,
+          },
+        );
+      }
+    }, panelElement);
+
+    return () => context.revert();
+  }, [open, panel]);
+
   if (!panel) {
     return (
       <Button
@@ -31,11 +70,7 @@ export function MobileMenu({
         aria-controls="mobile-nav"
         className="mobile-menu-trigger type-label flex items-center gap-3 rounded-none border-l border-border px-4"
       >
-        {open ? (
-          <X size={15} strokeWidth={1.5} />
-        ) : (
-          <Menu size={15} strokeWidth={1.5} />
-        )}
+        {open ? <FiX size={15} /> : <FiMenu size={15} />}
         {open ? "Close" : "Menu"}
       </Button>
     );
@@ -44,7 +79,9 @@ export function MobileMenu({
   return (
     <nav
       id="mobile-nav"
-      className="col-span-full border-t border-border md:hidden"
+      ref={panelRef}
+      aria-hidden={!open}
+      className="mobile-menu-panel col-span-full border-t border-border md:hidden"
     >
       <div className="type-label border-b border-border px-4 py-4 text-muted-foreground">
         Navigation
@@ -54,16 +91,14 @@ export function MobileMenu({
           key={item.href}
           href={item.href}
           onClick={() => onOpenChange(false)}
-          className={`type-label flex min-h-14 items-center justify-between border-b border-border px-4 ${
+          className={`mobile-menu-item type-label flex min-h-14 items-center justify-between border-b border-border px-4 ${
             index === MOBILE_NAV.length - 1
               ? "bg-brand text-brand-foreground"
               : "hover:bg-muted"
           }`}
         >
           {item.label}
-          <span aria-hidden="true" className="text-base leading-none">
-            →
-          </span>
+          <FiChevronRight aria-hidden="true" size={16} />
         </Link>
       ))}
     </nav>
