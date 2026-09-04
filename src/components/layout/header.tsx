@@ -20,7 +20,7 @@ export function Header() {
   return (
     <header className="relative border-b border-border bg-background">
       <div className="grid w-full grid-cols-[1fr_auto] md:grid-cols-2">
-        <div className="header-row header-brand-cell flex items-center justify-center md:justify-start">
+        <div className="header-row header-brand-cell flex items-center justify-start">
           <Link
             href="/"
             className="flex min-w-0 items-center gap-2 px-4 sm:gap-3 sm:px-6"

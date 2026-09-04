@@ -2,6 +2,7 @@ import Link from "next/link";
 import { FiChevronRight, FiMenu, FiX } from "react-icons/fi";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
+import { AnimatePresence, motion } from "motion/react";
 import { Button } from "@/components/ui";
 
 const MOBILE_NAV = [
@@ -68,9 +69,21 @@ export function MobileMenu({
         onClick={() => onOpenChange(!open)}
         aria-expanded={open}
         aria-controls="mobile-nav"
-        className="mobile-menu-trigger type-label flex items-center gap-3 rounded-none border-l border-border px-4"
+        aria-label={open ? "Close navigation menu" : "Open navigation menu"}
+        className="mobile-menu-trigger type-label flex w-24 items-center justify-center gap-3 rounded-none border-l border-border px-4"
       >
-        {open ? <FiX size={15} /> : <FiMenu size={15} />}
+        <AnimatePresence initial={false} mode="wait">
+          <motion.span
+            key={open ? "close" : "menu"}
+            initial={{ opacity: 0, rotate: open ? -45 : 45, scale: 0.8 }}
+            animate={{ opacity: 1, rotate: 0, scale: 1 }}
+            exit={{ opacity: 0, rotate: open ? 45 : -45, scale: 0.8 }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
+            className="flex"
+          >
+            {open ? <FiX size={15} /> : <FiMenu size={15} />}
+          </motion.span>
+        </AnimatePresence>
         {open ? "Close" : "Menu"}
       </Button>
     );
@@ -98,7 +111,11 @@ export function MobileMenu({
           }`}
         >
           {item.label}
-          <FiChevronRight aria-hidden="true" size={16} />
+          <FiChevronRight
+            aria-hidden="true"
+            className="mobile-menu-arrow"
+            size={16}
+          />
         </Link>
       ))}
     </nav>

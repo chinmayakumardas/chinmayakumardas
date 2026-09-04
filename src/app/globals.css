@@ -202,7 +202,7 @@
     }
   }
 
-  /* Drafting / blueprint corner tick */
+  /* Drafting /  corner tick */
   .corner-tick {
     @apply pointer-events-none absolute font-mono text-xs text-muted-foreground select-none;
   }
@@ -244,6 +244,15 @@
 
   .mobile-menu-trigger {
     height: var(--header-height) !important;
+  }
+
+  .mobile-menu-arrow {
+    transition: transform 180ms ease;
+  }
+
+  .mobile-menu-item:hover .mobile-menu-arrow,
+  .mobile-menu-item:focus-visible .mobile-menu-arrow {
+    transform: translateX(0.25rem);
   }
 
   .mobile-menu-panel {
@@ -539,23 +548,9 @@
     transition: opacity 180ms ease;
   }
 
-  .blueprint-surface {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    background-color: var(--background);
-    background-image:
-      linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
-      linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
-    background-position: center;
-    background-size:
-      8.5rem 100%,
-      100% 5.75rem;
-  }
-
   .hero-visual {
-    height: clamp(24rem, calc(100svh - var(--header-height) - 11rem), 34rem);
-    min-height: 24rem;
+    height: auto;
+    min-height: 0;
   }
 
   .hero-visual svg {
@@ -563,10 +558,80 @@
     height: auto;
   }
 
+  .hero-marquee {
+    animation: hero-marquee 24s linear infinite;
+  }
+
+  @keyframes hero-marquee {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .profile-hero-portrait {
+    isolation: isolate;
+    background: #171717;
+  }
+
+  .profile-hero-portrait::after {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(180deg, transparent 45%, rgb(0 0 0 / 0.34));
+    content: "";
+  }
+
+  .profile-hero-portrait img {
+    position: relative;
+    z-index: 0;
+    filter: grayscale(1) contrast(1.12) brightness(0.9);
+  }
+
+  .profile-status-dot {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 999px;
+    background: var(--brand);
+    box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--brand) 14%, transparent);
+  }
+
+  .profile-hero-title {
+    font-size: clamp(3rem, 7vw, 7.5rem);
+    line-height: 0.84;
+    letter-spacing: -0.065em;
+  }
+
+  .profile-hero-lede {
+    font-size: clamp(1.2rem, 2vw, 1.9rem);
+    line-height: 1.08;
+  }
+
+  .profile-hero-caption {
+    position: absolute;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    left: 1.25rem;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgb(255 255 255 / 0.4);
+    padding-top: 0.65rem;
+    color: #fff;
+    font-family: var(--font-label);
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
   @media (max-width: 640px) {
     .hero-visual {
-      height: min(60svh, 28rem);
-      min-height: 21rem;
+      height: auto;
+      min-height: 0;
     }
 
     .hero-visual svg {
@@ -579,29 +644,6 @@
     .custom-cursor-label {
       display: none;
     }
-  }
-
-  .blueprint-surface::before,
-  .blueprint-surface::after {
-    position: absolute;
-    z-index: -1;
-    content: "";
-    background: var(--brand);
-    opacity: 0.8;
-  }
-
-  .blueprint-surface::before {
-    top: 0;
-    bottom: 0;
-    left: 1.5rem;
-    width: 1px;
-  }
-
-  .blueprint-surface::after {
-    top: 1.5rem;
-    right: 1.5rem;
-    left: 1.5rem;
-    height: 1px;
   }
 
   .type-body {
@@ -664,27 +706,6 @@
   .footer-grid-social {
     grid-column: 4;
     grid-row: 2;
-  }
-
-  .blueprint-wordmark p {
-    width: 100%;
-    margin: 0;
-    color: transparent;
-    font-family: var(--font-display);
-    font-size: clamp(3.25rem, 16vw, 15rem);
-    font-weight: 700;
-    letter-spacing: -0.08em;
-    line-height: 0.78;
-    white-space: nowrap;
-    text-align: center;
-    -webkit-text-stroke: 1px var(--line-strong);
-  }
-
-  .blueprint-wordmark {
-    min-height: 18rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 
   .footer-legal {
@@ -758,15 +779,6 @@
       min-height: 16rem;
     }
 
-    .blueprint-wordmark {
-      min-height: 9rem;
-    }
-
-    .blueprint-wordmark p {
-      font-size: clamp(3rem, 19vw, 7rem);
-      letter-spacing: -0.09em;
-    }
-
     .footer-legal {
       grid-template-columns: 1fr 1fr;
     }
@@ -813,24 +825,6 @@
 
     /* Smooth touch scrolling on iOS */
     -webkit-overflow-scrolling: touch;
-  }
-
-  @media (max-width: 640px) {
-    .blueprint-surface {
-      background-size:
-        5.5rem 100%,
-        100% 4.5rem;
-    }
-
-    .blueprint-surface::before {
-      left: 0.75rem;
-    }
-
-    .blueprint-surface::after {
-      top: 0.75rem;
-      right: 0.75rem;
-      left: 0.75rem;
-    }
   }
 
   /* Hide scrollbar - Chrome / Edge / Safari */
