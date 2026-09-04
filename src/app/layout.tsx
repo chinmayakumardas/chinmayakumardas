@@ -7,6 +7,7 @@ import { personSchema, websiteSchema } from "@/data/schema";
 import { siteConfig } from "@/data/site";
 
 import "./globals.css";
+import { PageShell } from "@/components/ui/page-shell";
 
 const manrope = Geist({
   variable: "--font-manrope",
@@ -170,8 +171,11 @@ export default function RootLayout({
           }}
         />
 
-        <AppProvider>{children}</AppProvider>
+        <AppProvider>
+          <PageShell>{children}</PageShell>
+        </AppProvider>
       </body>
     </html>
   );
 }
+
