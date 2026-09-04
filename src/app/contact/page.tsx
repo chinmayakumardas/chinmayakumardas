@@ -1,4 +1,4 @@
-import { FiArrowUpRight, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
+import { FiArrowUpRight } from "react-icons/fi";
 import { Button, Input, Textarea } from "@/components/ui";
 
 const contactDetails = [
@@ -9,81 +9,85 @@ const contactDetails = [
 
 export default function Contact() {
   return (
-    <main>
-      <section className="container-portfolio grid border-b border-border md:grid-cols-[1.2fr_0.8fr]">
-        <div className="border-b border-border py-12 md:border-b-0 md:border-r md:py-16 md:pr-12">
-          <p className="type-label text-brand">Contact / project brief</p>
-          <h1 className="type-display mt-6 max-w-3xl text-[clamp(2.35rem,4.5vw,4.25rem)] font-bold uppercase leading-[0.9]">
-            Let&apos;s make something useful.
+    <main className="contact-page">
+      <section className="grid border-b border-border md:grid-cols-2">
+        <div className="border-b border-border px-6 py-8 md:border-b-0 md:border-r md:px-8 md:py-10">
+          <h1 className="type-display max-w-3xl text-[clamp(2.5rem,5vw,4.5rem)] font-bold uppercase leading-[0.88]">
+            Get in touch
           </h1>
-          <p className="type-body mt-8 max-w-md text-muted-foreground">
+          <p className="type-body mt-5 max-w-xl text-muted-foreground">
             Tell me what you are building, what is getting in the way, and what
-            a good result looks like. I&apos;ll come back with a clear next
-            step.
+            a good result looks like. Let&apos;s build it.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 divide-y divide-border">
+        <div className="grid grid-cols-3 divide-x divide-border">
           {contactDetails.map(([label, value]) => (
             <div
               key={label}
-              className="flex min-h-28 flex-col justify-between p-6 md:p-8"
+              className="flex min-h-28 flex-col justify-between p-4 md:p-6"
             >
               <span className="type-label text-muted-foreground">{label}</span>
-              <span className="text-sm">{value}</span>
+              <span className="wrap-break-word text-sm">{value}</span>
             </div>
           ))}
         </div>
       </section>
 
       <section className="grid border-b border-border md:grid-cols-2">
-        <div className="container-portfolio border-b border-border py-10 md:border-b-0 md:border-r md:py-14">
-          <p className="type-label text-muted-foreground">
-            Please fill out this form
-          </p>
-          <form className="mt-8 grid gap-0 border-t border-border">
+        <div className="border-b border-border md:border-b-0 md:border-r">
+          <div className="border-b border-border px-6 py-5 md:px-8">
+            <h2 className="type-display text-[clamp(1.8rem,3vw,3rem)] font-bold uppercase leading-none">
+              Please fill out this form
+            </h2>
+          </div>
+          <form className="contact-form">
             <div className="grid md:grid-cols-2">
-              <label className="type-label flex flex-col gap-3 border-b border-border py-5 md:border-r md:pr-5">
-                First name
+              <label className="contact-field md:border-r">
+                <span>First name</span>
                 <Input
                   name="firstName"
-                  placeholder="Your first name"
+                  placeholder=""
                   required
                 />
               </label>
-              <label className="type-label flex flex-col gap-3 border-b border-border py-5 md:pl-5">
-                Last name
-                <Input name="lastName" placeholder="Your last name" required />
+              <label className="contact-field">
+                <span>Last name</span>
+                <Input name="lastName" placeholder="" required />
               </label>
             </div>
-            <label className="type-label flex flex-col gap-3 border-b border-border py-5">
-              Email
+            <label className="contact-field">
+              <span>Email</span>
               <Input
                 name="email"
                 type="email"
-                placeholder="you@company.com"
+                placeholder=""
                 required
               />
             </label>
-            <label className="type-label flex flex-col gap-3 border-b border-border py-5">
-              Message
+            <label className="contact-field">
+              <span>Phone number</span>
+              <Input name="phone" type="tel" placeholder="" required />
+            </label>
+            <label className="contact-field contact-message-field">
+              <span>Message</span>
               <Textarea
                 name="message"
-                placeholder="Tell me about the work"
-                className="min-h-32"
+                placeholder=""
+                className="min-h-36"
                 required
               />
             </label>
             <Button
               type="submit"
-              className="brand-button mt-6 h-11 w-full rounded-none border-0 px-4 md:w-fit"
+              className="contact-submit brand-button h-12 w-full rounded-none border-0 px-6 text-left"
             >
-              Send message <FiArrowUpRight size={16} />
+              Submit <FiArrowUpRight size={16} />
             </Button>
           </form>
         </div>
 
-        <div className="blueprint-surface flex min-h-96 items-center justify-center p-6 md:min-h-full">
+        <div className="blueprint-surface contact-visual flex min-h-96 items-center justify-center p-4 md:min-h-full md:p-8">
           <svg
             viewBox="0 0 600 480"
             className="relative z-10 w-full max-w-xl text-foreground"
@@ -123,30 +127,6 @@ export default function Contact() {
               CHINMAYA / PRODUCT SYSTEMS
             </text>
           </svg>
-        </div>
-      </section>
-
-      <section className="container-portfolio flex flex-wrap items-center justify-between gap-5 py-6">
-        <p className="type-label text-muted-foreground">Direct lines</p>
-        <div className="flex flex-wrap gap-5 font-mono text-xs uppercase tracking-widest">
-          <a
-            href="mailto:hello@chinmayakumardas.com"
-            className="flex items-center gap-2 hover:text-brand"
-          >
-            <FiMail size={14} /> Email
-          </a>
-          <a
-            href="https://github.com"
-            className="flex items-center gap-2 hover:text-brand"
-          >
-            <FiGithub size={14} /> GitHub
-          </a>
-          <a
-            href="https://linkedin.com"
-            className="flex items-center gap-2 hover:text-brand"
-          >
-            <FiLinkedin size={14} /> LinkedIn
-          </a>
         </div>
       </section>
     </main>

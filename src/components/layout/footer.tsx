@@ -91,14 +91,8 @@ export function Footer() {
         </div>
 
         <div className="footer-grid-business border-b border-border p-5 md:p-6">
-          <p className="type-label text-muted-foreground">New business</p>
-          <a
-            className="mt-5 block text-sm hover:text-brand"
-            href="mailto:hello@chinmayakumardas.com"
-          >
-            hello@chinmayakumardas.com
-          </a>
-          <div className="mt-7 border-t border-border pt-5">
+          
+          <div className="mt-7  pt-5">
             <p className="type-label text-muted-foreground">
               General inquiries
             </p>
@@ -106,7 +100,7 @@ export function Footer() {
               className="mt-5 block text-sm hover:text-brand"
               href="mailto:hello@chinmayakumardas.com"
             >
-              hello@chinmayakumardas.com
+              chinmayakumardas2000@gmail.com
             </a>
           </div>
         </div>

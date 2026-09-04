@@ -347,11 +347,114 @@
   }
 
   .header-logo-name {
+    min-width: 0;
     font-family: var(--font-display);
-    font-size: 1.35rem;
+    font-size: clamp(0.82rem, 1.7vw, 1.35rem);
     font-weight: 700;
     line-height: 1;
     letter-spacing: -0.055em;
+    white-space: nowrap;
+  }
+
+  .text-display {
+    font-family: var(--font-display);
+    font-size: clamp(2.75rem, 7vw, 6.5rem);
+    font-weight: 700;
+    line-height: 0.92;
+    letter-spacing: -0.055em;
+  }
+
+  .text-body-lg {
+    font-size: clamp(1rem, 1.4vw, 1.25rem);
+    line-height: 1.5;
+  }
+
+  .not-found-page {
+    min-height: 70svh;
+  }
+
+  .not-found-surface {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background-color: var(--background);
+  }
+
+  .not-found-icon {
+    display: grid;
+    width: 3rem;
+    height: 3rem;
+    place-items: center;
+    border: 1px solid var(--border);
+    color: var(--muted-foreground);
+  }
+
+  .not-found-icon svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .not-found-heading {
+    text-wrap: balance;
+  }
+
+  .contact-form {
+    display: grid;
+    gap: 0;
+  }
+
+  .contact-field {
+    display: flex;
+    min-height: 5.5rem;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 1.5rem;
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    font-weight: 700;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .contact-field input,
+  .contact-field textarea {
+    min-height: 1.5rem;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    outline: none;
+    box-shadow: none;
+  }
+
+  .contact-field input:focus,
+  .contact-field textarea:focus {
+    box-shadow: none;
+  }
+
+  .contact-message-field {
+    min-height: 9rem;
+    justify-content: flex-start;
+    padding-top: 1.5rem;
+  }
+
+  .contact-submit {
+    justify-content: space-between;
+    border-top: 1px solid var(--brand);
+    background: transparent;
+    color: var(--muted-foreground);
+  }
+
+  .contact-submit:hover,
+  .contact-submit:focus-visible {
+    color: var(--brand-foreground);
+  }
+
+  .contact-visual svg {
+    max-height: 32rem;
   }
 
   @media (max-width: 767px) {
@@ -366,7 +469,36 @@
     }
 
     .header-logo-name {
-      font-size: 1.1rem;
+      font-size: clamp(0.82rem, 4.4vw, 1.1rem);
+    }
+
+    .contact-page > section:first-child > div:last-child {
+      grid-column: 1 / -1;
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-page > section:first-child > div:last-child > div {
+      min-height: 6.5rem;
+      padding: 1rem;
+    }
+
+    .contact-field {
+      padding-inline: 1rem;
+    }
+
+    .contact-form > div:first-child .contact-field:last-child {
+      border-top: 0;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .header-logo-mark {
+      width: 1.9rem;
+      height: 1.9rem;
+    }
+
+    .header-logo-name {
+      font-size: 0.78rem;
     }
   }
 
@@ -513,13 +645,15 @@
   }
 
   .blueprint-wordmark p {
+    width: 100%;
     margin: 0;
     color: transparent;
     font-family: var(--font-display);
-    font-size: clamp(6rem, 16vw, 15rem);
+    font-size: clamp(3.25rem, 16vw, 15rem);
     font-weight: 700;
     letter-spacing: -0.08em;
     line-height: 0.78;
+    white-space: nowrap;
     text-align: center;
     -webkit-text-stroke: 1px var(--line-strong);
   }
@@ -528,6 +662,7 @@
     min-height: 18rem;
     display: flex;
     align-items: center;
+    justify-content: center;
   }
 
   .footer-legal {
@@ -602,7 +737,12 @@
     }
 
     .blueprint-wordmark {
-      min-height: 10rem;
+      min-height: 9rem;
+    }
+
+    .blueprint-wordmark p {
+      font-size: clamp(3rem, 19vw, 7rem);
+      letter-spacing: -0.09em;
     }
 
     .footer-legal {
