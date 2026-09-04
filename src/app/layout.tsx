@@ -7,9 +7,10 @@ import { personSchema, websiteSchema } from "@/data/schema";
 import { siteConfig } from "@/data/site";
 
 import "./globals.css";
+import { PageShell } from "@/components/ui/page-shell";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const manrope = Geist({
+  variable: "--font-manrope",
   subsets: ["latin"],
 });
 
@@ -150,9 +151,10 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${manrope.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        
         <GoogleTagManager gtmId="GTM-KRK7ZQZC" />
 
         <script
@@ -169,8 +171,11 @@ export default function RootLayout({
           }}
         />
 
-        <AppProvider>{children}</AppProvider>
+        <AppProvider>
+          <PageShell>{children}</PageShell>
+        </AppProvider>
       </body>
     </html>
   );
 }
+
