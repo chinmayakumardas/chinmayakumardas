@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { FiChevronRight, FiMenu, FiX } from "react-icons/fi";
+import { FiArrowUpRight, FiMenu, FiX } from "react-icons/fi";
+
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { AnimatePresence, motion } from "motion/react";
@@ -111,7 +112,7 @@ export function MobileMenu({
           }`}
         >
           {item.label}
-          <FiChevronRight
+          <FiArrowUpRight
             aria-hidden="true"
             className="mobile-menu-arrow"
             size={16}
