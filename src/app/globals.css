@@ -403,16 +403,19 @@
     gap: 0;
   }
 
+  .contact-layout {
+    min-height: clamp(30rem, calc(100svh - var(--header-height) - 8rem), 36rem);
+  }
+
   .contact-field {
     display: flex;
-    min-height: 5.5rem;
+    min-height: 3.75rem;
     flex-direction: column;
     justify-content: center;
-    gap: 0.5rem;
     border-bottom: 1px solid var(--border);
-    padding: 1rem 1.5rem;
+    padding: 0;
     font-family: var(--font-display);
-    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    font-size: 1rem;
     font-weight: 700;
     line-height: 1;
     text-transform: uppercase;
@@ -420,14 +423,21 @@
 
   .contact-field input,
   .contact-field textarea {
-    min-height: 1.5rem;
+    width: 100%;
+    min-height: 3.75rem;
     border: 0;
     border-radius: 0;
-    padding: 0;
+    padding: 0 1.5rem;
     font-family: var(--font-sans);
     font-size: 0.875rem;
     outline: none;
     box-shadow: none;
+  }
+
+  .contact-field input::placeholder,
+  .contact-field textarea::placeholder {
+    color: var(--muted-foreground);
+    opacity: 1;
   }
 
   .contact-field input:focus,
@@ -436,25 +446,41 @@
   }
 
   .contact-message-field {
-    min-height: 9rem;
-    justify-content: flex-start;
-    padding-top: 1.5rem;
+    min-height: 6rem;
+    justify-content: stretch;
+  }
+
+  .contact-message-field textarea {
+    min-height: 6rem;
+    padding-block: 1rem;
   }
 
   .contact-submit {
     justify-content: space-between;
     border-top: 1px solid var(--brand);
-    background: transparent;
-    color: var(--muted-foreground);
+    background: var(--brand);
+    color: var(--brand-foreground);
   }
 
   .contact-submit:hover,
   .contact-submit:focus-visible {
+    background: color-mix(in srgb, var(--brand) 86%, var(--foreground));
     color: var(--brand-foreground);
   }
 
-  .contact-visual svg {
-    max-height: 32rem;
+  .contact-aside {
+    background: color-mix(in srgb, var(--muted) 42%, var(--background));
+  }
+
+  .contact-object {
+    max-height: 15rem;
+    color: var(--foreground);
+  }
+
+  @media (max-width: 767px) {
+    .contact-layout {
+      min-height: 0;
+    }
   }
 
   @media (max-width: 767px) {
@@ -472,17 +498,13 @@
       font-size: clamp(0.82rem, 4.4vw, 1.1rem);
     }
 
-    .contact-page > section:first-child > div:last-child {
-      grid-column: 1 / -1;
-      border-top: 1px solid var(--border);
-    }
-
-    .contact-page > section:first-child > div:last-child > div {
-      min-height: 6.5rem;
-      padding: 1rem;
-    }
-
     .contact-field {
+      min-height: 3.5rem;
+    }
+
+    .contact-field input,
+    .contact-field textarea {
+      min-height: 3.5rem;
       padding-inline: 1rem;
     }
 
