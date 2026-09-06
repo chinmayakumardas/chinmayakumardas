@@ -1,9 +1,12 @@
+// app/sitemap.ts
+
 import type { MetadataRoute } from "next";
+
 export const dynamic = "force-static";
 
+const BASE_URL = "https://chinmayakumardas.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const BASE_URL = "https://chinmayakumardas.com";
   const now = new Date();
 
   return [
@@ -13,18 +16,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 1,
     },
-
-  
-
     {
       url: `${BASE_URL}/about`,
       lastModified: now,
-      changeFrequency: "weekly",
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/services`,
+      lastModified: now,
+      changeFrequency: "monthly",
       priority: 0.9,
     },
-
     {
-      url: `${BASE_URL}/project`,
+      url: `${BASE_URL}/projects`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
@@ -35,8 +40,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
-
- 
-    
+    {
+      url: `${BASE_URL}/privacy`,
+      lastModified: now,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
+      url: `${BASE_URL}/terms`,
+      lastModified: now,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
+      url: `${BASE_URL}/cookies`,
+      lastModified: now,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
   ];
 }
