@@ -2,39 +2,41 @@
 
 import Lenis from "lenis";
 import { useEffect } from "react";
-import type { ReactNode } from "react";
+import type { ReactNode, RefObject } from "react";
 
 interface LenisProviderProps {
   children: ReactNode;
-  wrapperRef: React.RefObject<HTMLDivElement | null>;
+  wrapperRef: RefObject<HTMLDivElement | null>;
 }
 
-export function LenisProvider({ children, wrapperRef }: LenisProviderProps) {
+export function LenisProvider({
+  children,
+  wrapperRef,
+}: LenisProviderProps) {
   useEffect(() => {
     const wrapper = wrapperRef.current;
 
-    if (!wrapper) {
-      return;
-    }
+    if (!wrapper) return;
 
     const lenis = new Lenis({
       wrapper,
       content: wrapper,
       autoRaf: false,
       smoothWheel: true,
-      syncTouch: true,
+      syncTouch: false,
     });
 
-    let animationFrame = 0;
+    let rafId = 0;
+
     const raf = (time: number) => {
       lenis.raf(time);
-      animationFrame = requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     };
 
-    animationFrame = requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
     return () => {
-      cancelAnimationFrame(animationFrame);
+      cancelAnimationFrame(rafId);
       lenis.destroy();
     };
   }, [wrapperRef]);

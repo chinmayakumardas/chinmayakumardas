@@ -108,7 +108,7 @@ export function PageShell({ children, className }: PageShellProps) {
           </div>
 
           {/* Page Content */}
-          <div ref={pageRef} className="flex min-h-0 flex-1 flex-col">
+          <div ref={pageRef} className="flex  flex-col">
             {children}
             <Footer />
           </div>
