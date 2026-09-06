@@ -71,7 +71,7 @@ export function MobileMenu({
         aria-expanded={open}
         aria-controls="mobile-nav"
         aria-label={open ? "Close navigation menu" : "Open navigation menu"}
-        className="mobile-menu-trigger type-label flex w-24 items-center justify-center gap-3 rounded-none border-l border-border px-4"
+        className="h-[var(--header-height)] w-24 rounded-none border-l border-border px-4 font-label text-[0.625rem] uppercase leading-none tracking-[0.14em]"
       >
         <AnimatePresence initial={false} mode="wait">
           <motion.span
@@ -95,9 +95,9 @@ export function MobileMenu({
       id="mobile-nav"
       ref={panelRef}
       aria-hidden={!open}
-      className="mobile-menu-panel col-span-full border-t border-border md:hidden"
+      className="absolute inset-x-0 top-full z-[60] col-span-full h-0 max-h-[calc(100svh-var(--header-height)-2rem)] overflow-hidden overflow-y-auto border-t border-border bg-background opacity-0 md:hidden"
     >
-      <div className="type-label border-b border-border px-4 py-4 text-muted-foreground">
+      <div className="border-b border-border px-4 py-4 font-label text-[0.625rem] uppercase leading-none tracking-[0.14em] text-muted-foreground">
         Navigation
       </div>
       {MOBILE_NAV.map((item, index) => (
@@ -105,16 +105,16 @@ export function MobileMenu({
           key={item.href}
           href={item.href}
           onClick={() => onOpenChange(false)}
-          className={`mobile-menu-item type-label flex min-h-14 items-center justify-between border-b border-border px-4 ${
+          className={`group flex min-h-14 items-center justify-between border-b border-border px-4 font-label text-[0.625rem] uppercase leading-none tracking-[0.14em] ${
             index === MOBILE_NAV.length - 1
-              ? "bg-brand text-brand-foreground"
+              ? "bg-brand text-brand-foreground hover:bg-brand hover:text-foreground focus-visible:bg-brand focus-visible:text-foreground"
               : "hover:bg-muted"
           }`}
         >
           {item.label}
           <FiArrowUpRight
             aria-hidden="true"
-            className="mobile-menu-arrow"
+            className="transition-transform duration-180 ease-out group-hover:translate-x-1 group-focus-visible:translate-x-1"
             size={16}
           />
         </Link>

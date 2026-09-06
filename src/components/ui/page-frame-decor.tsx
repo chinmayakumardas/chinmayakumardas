@@ -17,33 +17,33 @@ export function PageFrameDecor({ className }: PageFrameDecorProps) {
       className={cn("pointer-events-none absolute inset-0", className)}
       aria-hidden="true"
     >
-      <span className="absolute -left-px -top-px text-[15px] leading-none">
+      <span className="absolute top-1 left-1 z-10 inline-flex size-3 items-center justify-center font-mono text-[16px] font-medium leading-none text-foreground/70">
         +
       </span>
-      <span className="absolute -right-px -top-px text-[15px] leading-none">
+      <span className="absolute top-1 right-1 z-10 inline-flex size-3 items-center justify-center font-mono text-[16px] font-medium leading-none text-foreground/70">
         +
       </span>
-      <span className="absolute -bottom-px -left-px text-[15px] leading-none">
+      <span className="absolute bottom-1 left-1 z-10 inline-flex size-3 items-center justify-center font-mono text-[16px] font-medium leading-none text-foreground/70">
         +
       </span>
-      <span className="absolute -bottom-px -right-px text-[15px] leading-none">
+      <span className="absolute right-1 bottom-1 z-10 inline-flex size-3 items-center justify-center font-mono text-[16px] font-medium leading-none text-foreground/70">
         +
       </span>
 
       <div
-        className="absolute left-6 right-6 top-2 h-2 opacity-30"
+        className="absolute top-2 right-2 left-2 h-2 opacity-30"
         style={{ backgroundImage: horizontalRuler }}
       />
       <div
-        className="absolute bottom-2 left-6 right-6 h-2 opacity-30"
+        className="absolute right-2 bottom-2 left-2 h-2 opacity-30"
         style={{ backgroundImage: horizontalRuler }}
       />
       <div
-        className="absolute bottom-6 left-2 top-6 w-2 opacity-30"
+        className="absolute top-2 bottom-2 left-2 w-2 opacity-30"
         style={{ backgroundImage: verticalRuler }}
       />
       <div
-        className="absolute bottom-6 right-2 top-6 w-2 opacity-30"
+        className="absolute top-2 right-2 bottom-2 w-2 opacity-30"
         style={{ backgroundImage: verticalRuler }}
       />
     </div>

@@ -1,86 +1,73 @@
-import Link from "next/link";
 import Image from "next/image";
-import { FiArrowUpRight } from "react-icons/fi";
-import { Button, PageFrameDecor } from "@/components/ui";
+import Link from "next/link";
+import { PageFrameDecor } from "@/components/ui";
 
 export function Hero() {
   return (
-    <section className="border-b border-border">
-      <div className="hero-visual relative border-b border-border px-4 py-4 md:px-12 md:py-5">
-        <PageFrameDecor />
-
-        <div className="relative mx-auto grid min-w-0 max-w-6xl border border-border md:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
-          <div className="grid min-w-0 border-b border-border md:border-b-0 md:border-r">
-            <div className="border-b border-border p-6 sm:p-8 md:p-10">
-              <p className="type-label mb-6 text-muted-foreground">
-                Creative developer / UI/UX
-              </p>
-              <h1 className="type-display max-w-2xl wrap-break-word text-[clamp(1.85rem,4.2vw,3.9rem)] font-bold uppercase leading-[0.92]">
-                I make websites
-                <br />
-                that generate leads.
-              </h1>
-              <p className="mt-8 max-w-sm text-sm leading-relaxed text-muted-foreground">
-                Clear strategy, sharp design, and reliable technology for brands
-                that want more than a good-looking website.
-              </p>
-            </div>
-
-            <div className="grid min-w-0 sm:grid-cols-[minmax(0,1fr)_auto]">
-              <div className="min-w-0 border-b border-border p-6 sm:border-b-0 sm:border-r sm:p-8">
-                
-                <p className="max-w-md text-base leading-relaxed">
-                  I turn complex ideas into clear, useful experiences with a
-                  strong eye for interaction, visual systems, and detail.
-                </p>
-                <div
-                  className="mt-6 overflow-hidden border-y border-border py-3"
-                  aria-label="Core skills"
-                >
-                  <div className="hero-marquee flex w-max gap-6 whitespace-nowrap font-mono text-[0.6rem] uppercase tracking-[0.14em] text-muted-foreground">
-                    <span>UI/UX Design</span>
-                    <span aria-hidden="true">+</span>
-                    <span>Creative Development</span>
-                    <span aria-hidden="true">+</span>
-                    <span>AI Products</span>
-                    <span aria-hidden="true">+</span>
-                    <span>React &amp; Next.js</span>
-                    <span aria-hidden="true">+</span>
-                    <span>UI/UX Design</span>
-                    <span aria-hidden="true">+</span>
-                    <span>Creative Development</span>
-                    <span aria-hidden="true">+</span>
-                    <span>AI Products</span>
-                    <span aria-hidden="true">+</span>
-                    <span>React &amp; Next.js</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-end p-6 sm:p-8">
-                <Button asChild className="h-11 gap-3 px-5">
-                  <Link href="/contact">
-                    Start a project
-                    <FiArrowUpRight aria-hidden="true" />
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-
-          <div className="relative flex min-h-80 items-end justify-center overflow-hidden bg-secondary/40 px-6 pt-10 sm:min-h-88 md:min-h-136">
-            <div className="absolute left-5 top-5 type-label text-muted-foreground">
-              Available for select work
-            </div>
+    <section>
+      <div className="relative h-[calc(100svh-var(--header-height))] overflow-hidden border-b border-border">
+        <div className="grid h-full min-w-0 grid-rows-[minmax(0,1fr)_clamp(14rem,30vh,18rem)] max-md:grid-rows-[minmax(0,1fr)_auto]">
+          <div className="relative flex min-h-0 items-end justify-center overflow-hidden border-b border-border px-3 pb-4 pt-7 sm:px-5 sm:pb-5 sm:pt-8">
+            <PageFrameDecor className="z-10" />
             <Image
               src="/images/profile.png"
               alt="Illustrated portrait of Chinmaya Kumar Das"
               width={460}
               height={540}
               priority
-              className="relative h-auto max-h-136 w-full max-w-md object-contain object-bottom"
+              className="relative h-auto max-h-full w-[min(78vw,30rem)] max-w-full object-contain object-bottom md:h-full md:w-[min(68vw,42rem)] md:max-w-2xl"
             />
           </div>
+
+          <div className="grid min-w-0 grid-rows-[auto_auto] md:grid-cols-[minmax(0,1.35fr)_minmax(0,0.9fr)] md:grid-rows-none">
+            <div className="flex min-w-0 flex-col justify-between overflow-hidden border-b-2 border-border p-4 sm:p-6 md:border-b-0 md:border-r-2 md:p-7 lg:p-8">
+           
+              <h1 className="type-display mt-5 max-w-[18ch] text-[clamp(1.9rem,3.7vw,3.75rem)] font-semibold uppercase leading-[0.92] text-balance sm:mt-6">
+                Digital products that feel simple.
+              </h1>
+            </div>
+
+            <div className="grid min-w-0 grid-rows-[minmax(0,1fr)_auto]">
+              <div className="grid min-w-0 border-b-2 border-border sm:grid-cols-2">
+                <div className="border-b-2 border-border p-4 sm:p-6 sm:border-b-0 sm:border-r-2 md:p-7">
+                  <p className="max-w-sm text-sm leading-relaxed text-muted-foreground sm:text-[0.9375rem]">
+                    I build thoughtful interfaces, AI-powered workflows, and
+                    reliable systems for people doing meaningful work.
+                  </p>
+                </div>
+                <div className="flex items-end justify-between gap-4 p-4 sm:p-6 md:p-7">
+                  <Link
+                    href="/projects"
+                    className="type-label inline-flex items-center gap-2 text-brand transition-opacity hover:opacity-65"
+                  >
+                    Explore work <span aria-hidden="true">↗</span>
+                  </Link>
+                </div>
+              </div>
+              <div className="flex min-h-11 items-center overflow-hidden px-4 py-3 font-mono text-[0.6rem] uppercase tracking-[0.12em] text-muted-foreground sm:px-6 md:px-7">
+                <div
+                  className="flex min-w-max items-center gap-5"
+                  aria-label="Skills"
+                >
+                  <span className="text-brand">React</span>
+                  <span aria-hidden="true">✦</span>
+                  <span>Next.js</span>
+                  <span aria-hidden="true">✦</span>
+                  <span>TypeScript</span>
+                  <span aria-hidden="true">✦</span>
+                  <span>AI systems</span>
+                  <span aria-hidden="true">✦</span>
+                  <span>Automation</span>
+                  <span aria-hidden="true">✦</span>
+                  <span>React</span>
+                  <span aria-hidden="true">✦</span>
+                  <span>Next.js</span>
+                </div>
+              </div>
+            </div>
+          </div> 
+
+          
         </div>
       </div>
     </section>

@@ -87,11 +87,15 @@ export function PageShell({ children, className }: PageShellProps) {
       )}
     >
       <Cursor />
-      <div ref={transitionRef} className="page-transition" aria-hidden="true" />
+      <div
+        ref={transitionRef}
+        className="pointer-events-none fixed inset-0 z-[90] origin-bottom scale-y-0 bg-brand"
+        aria-hidden="true"
+      />
       <LenisProvider wrapperRef={scrollRef}>
         <div
           ref={scrollRef}
-          className="page-scrollbar-hide box-border flex h-full w-full flex-col overflow-x-hidden overflow-y-auto border border-border bg-background sm:border-2"
+          className="box-border flex h-full w-full flex-col overflow-x-hidden overflow-y-auto overscroll-contain border border-border bg-background [scrollbar-width:none] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch] [&::-webkit-scrollbar]:hidden sm:border-2"
         >
           {/* Sticky Header */}
           <div

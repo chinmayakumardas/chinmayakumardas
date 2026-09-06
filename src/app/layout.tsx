@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+// import { Geist, Geist_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, Geist_Mono } from "next/font/google"; // 1. Change import here
+
 import { GoogleTagManager } from "@next/third-parties/google";
 
 import { AppProvider } from "@/components/providers/app-provider";
@@ -9,138 +11,140 @@ import { siteConfig } from "@/data/site";
 import "./globals.css";
 import { PageShell } from "@/components/ui/page-shell";
 
-const manrope = Geist({
-  variable: "--font-manrope",
-  subsets: ["latin"],
-});
+
+
+const plusJakartaSans = Plus_Jakarta_Sans({ 
+  variable: "--font-plus-jakarta-sans", 
+  subsets: ["latin"], 
+}); 
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
+// export const metadata: Metadata = {
+//   metadataBase: new URL(siteConfig.url),
 
-  title: {
-    default: "Chinmaya Kumar Das | AI Engineer • Full Stack Developer",
-    template: "%s | Chinmaya Kumar Das",
-  },
+//   title: {
+//     default: "Chinmaya Kumar Das | AI Engineer • Full Stack Developer",
+//     template: "%s | Chinmaya Kumar Das",
+//   },
 
-  description: siteConfig.description,
+//   description: siteConfig.description,
 
-  applicationName: siteConfig.name,
+//   applicationName: siteConfig.name,
 
-  referrer: "origin-when-cross-origin",
+//   referrer: "origin-when-cross-origin",
 
-  authors: [
-    {
-      name: siteConfig.name,
-      url: siteConfig.url,
-    },
-  ],
+//   authors: [
+//     {
+//       name: siteConfig.name,
+//       url: siteConfig.url,
+//     },
+//   ],
 
-  creator: siteConfig.name,
+//   creator: siteConfig.name,
 
-  publisher: siteConfig.name,
+//   publisher: siteConfig.name,
 
-  category: "Technology",
+//   category: "Technology",
 
-  keywords: [
-    "Chinmaya Kumar Das",
-    "AI Engineer",
-    "Software Engineer",
-    "Full Stack Developer",
-    "Product Engineer",
-    "Frontend Developer",
-    "Web Developer",
-    "Creative Developer",
-    "Next.js",
-    "React",
-    "TypeScript",
-    "JavaScript",
-    "Tailwind CSS",
-    "GSAP",
-    "Motion",
-    "React Three Fiber",
-    "Three.js",
-    "Node.js",
-    "REST API",
-    "Portfolio",
-    "Freelancer",
-    "Technical Consultant",
-  ],
+//   keywords: [
+//     "Chinmaya Kumar Das",
+//     "AI Engineer",
+//     "Software Engineer",
+//     "Full Stack Developer",
+//     "Product Engineer",
+//     "Frontend Developer",
+//     "Web Developer",
+//     "Creative Developer",
+//     "Next.js",
+//     "React",
+//     "TypeScript",
+//     "JavaScript",
+//     "Tailwind CSS",
+//     "GSAP",
+//     "Motion",
+//     "React Three Fiber",
+//     "Three.js",
+//     "Node.js",
+//     "REST API",
+//     "Portfolio",
+//     "Freelancer",
+//     "Technical Consultant",
+//   ],
 
-  robots: {
-    index: true,
-    follow: true,
+//   robots: {
+//     index: true,
+//     follow: true,
 
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large",
-      "max-video-preview": -1,
-      "max-snippet": -1,
-    },
-  },
+//     googleBot: {
+//       index: true,
+//       follow: true,
+//       "max-image-preview": "large",
+//       "max-video-preview": -1,
+//       "max-snippet": -1,
+//     },
+//   },
 
-  alternates: {
-    canonical: siteConfig.url,
-  },
+//   alternates: {
+//     canonical: siteConfig.url,
+//   },
 
-  openGraph: {
-    type: "website",
+//   openGraph: {
+//     type: "website",
 
-    locale: siteConfig.locale,
+//     locale: siteConfig.locale,
 
-    url: siteConfig.url,
+//     url: siteConfig.url,
 
-    siteName: siteConfig.name,
+//     siteName: siteConfig.name,
 
-    title:
-      "Chinmaya Kumar Das | AI Engineer • Full Stack Developer • Product Engineer",
+//     title:
+//       "Chinmaya Kumar Das | AI Engineer • Full Stack Developer • Product Engineer",
 
-    description:
-      "Building AI-powered applications, scalable web platforms, automation systems, and modern digital experiences.",
+//     description:
+//       "Building AI-powered applications, scalable web platforms, automation systems, and modern digital experiences.",
 
-    images: [
-      {
-        url: siteConfig.ogImage,
-        width: 1200,
-        height: 630,
-        alt: siteConfig.name,
-      },
-    ],
-  },
+//     images: [
+//       {
+//         url: siteConfig.ogImage,
+//         width: 1200,
+//         height: 630,
+//         alt: siteConfig.name,
+//       },
+//     ],
+//   },
 
-  twitter: {
-    card: "summary_large_image",
+//   twitter: {
+//     card: "summary_large_image",
 
-    creator: siteConfig.twitter,
+//     creator: siteConfig.twitter,
 
-    title:
-      "Chinmaya Kumar Das | AI Engineer • Full Stack Developer • Product Engineer",
+//     title:
+//       "Chinmaya Kumar Das | AI Engineer • Full Stack Developer • Product Engineer",
 
-    description:
-      "AI Engineer • Full Stack Developer • Product Engineer",
+//     description:
+//       "AI Engineer • Full Stack Developer • Product Engineer",
 
-    images: [siteConfig.ogImage],
-  },
+//     images: [siteConfig.ogImage],
+//   },
 
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-  },
+//   icons: {
+//     icon: "/favicon.ico",
+//     shortcut: "/favicon.ico",
+//     apple: "/apple-touch-icon.png",
+//   },
 
-  manifest: "/site.webmanifest",
+//   manifest: "/site.webmanifest",
 
-  formatDetection: {
-    email: false,
-    telephone: false,
-    address: false,
-  },
-};
+//   formatDetection: {
+//     email: false,
+//     telephone: false,
+//     address: false,
+//   },
+// };
 
 export default function RootLayout({
   children,
@@ -151,7 +155,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${manrope.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${plusJakartaSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         
