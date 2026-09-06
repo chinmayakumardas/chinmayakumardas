@@ -1,41 +1,71 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import { FiArrowUpRight } from "react-icons/fi";
 import { Button, Input } from "@/components/ui";
+import { socials } from "@/data/social";
 
-const companyLinks = [
+const profileLinks: Array<[string, string | null]> = [
   ["Home", "/"],
-  ["About us", "/about"],
-  ["Contact us", "/contact"],
+  ["About me", "/about"],
+  ["Projects", "/projects"],
+  ["Contact", "/contact"],
 ];
 
-const productLinks = [
-  ["Selected projects", "/projects"],
-  ["Services", "/services"],
-  ["Project scope", "/services"],
+const resourceLinks: Array<[string, string | null]> = [
+  ["UI Library", null],
+  ["Developer Utils", null],
 ];
 
-const resourceLinks = [
-  ["Insights", "/projects"],
-  ["AI Practices", "/services"],
-  ["Design Workflows", "/projects"],
+const legalLinks: Array<[string, string | null]> = [
+  ["Privacy policy", "/privacy"],
+  ["Terms & conditions", "/terms"],
+  ["Cookie policy", "/cookies"],
 ];
 
 export function Footer() {
+
+  const [subscribed, setSubscribed] = useState(false);
+  // Filter relevant social links for the footer
+  const footerSocials = socials.filter((social) =>
+    ["GITHUB", "LINKEDIN", "INSTAGRAM", "BEHANCE"].includes(social.label),
+  );
+
   return (
     <footer className="border-t border-border bg-background">
-      <div className="footer-grid">
-        <div className="footer-grid-statement border-b border-border p-6 md:p-8">
-          <p className="type-label text-brand">Chinmaya Kumar Das / 2026</p>
-          <h2 className="type-display mt-5 max-w-sm text-[clamp(2rem,3vw,3.6rem)] font-bold uppercase leading-[0.88]">
-            An AI engineer that helps businesses build better digital products.
+      <div className="grid grid-cols-[1.5fr_1fr_1fr_1fr_1.5fr] grid-rows-[minmax(9rem,auto)_minmax(9rem,auto)] border-b border-border max-lg:grid-cols-2 max-lg:grid-rows-[auto] max-sm:block [&>*]:border-r [&>*]:border-border max-sm:[&>*]:border-r-0">
+        {/* Left Column: Large Personal Intro */}
+        <div className="col-[1] row-[1] border-b border-border p-5 md:p-6 max-lg:col-auto max-lg:row-auto flex flex-col justify-start">
+          <h2 className="max-w-sm font-display text-[clamp(1.5rem,2.5vw,1.75rem)] font-bold uppercase leading-[0.95] tracking-[-0.055em]">
+            Creative -developer building innovative interfaces and AI-powered
+            experiences.
           </h2>
         </div>
 
-        <FooterLinkColumn title="Company" links={companyLinks} />
-        <FooterLinkColumn title="Product" links={productLinks} />
-        <FooterLinkColumn title="Resources" links={resourceLinks} />
+        {/* Column 2: Profile Navigation */}
+        <FooterLinkColumn
+          title="Profile"
+          links={profileLinks}
+          className="col-[2] row-[1]"
+        />
 
-        <div className="footer-mark-panel row-span-2 flex min-h-72 items-center justify-center border-b border-border p-8 lg:border-b-0">
+        {/* Column 3: Resources */}
+        <FooterLinkColumn
+          title="Resources"
+          links={resourceLinks}
+          className="col-[3] row-[1]"
+        />
+
+        {/* Column 4: Legal */}
+        <FooterLinkColumn
+          title="Legal"
+          links={legalLinks}
+          className="col-[4] row-[1]"
+        />
+
+        {/* Right Column: Brand/Social */}
+        <div className="col-[5] row-span-2 flex flex-col items-center justify-center border-b border-border p-8 lg:border-b-0 max-lg:col-auto max-lg:row-auto max-lg:min-h-72 max-sm:min-h-64">
           <svg
             viewBox="0 0 160 160"
             className="w-44 text-foreground"
@@ -51,91 +81,122 @@ export function Footer() {
           </svg>
         </div>
 
-        <div className="footer-grid-subscribe border-b border-border p-5 md:p-6">
-          <p className="type-label text-muted-foreground">Subscribe</p>
-          <p className="mt-5 max-w-sm text-sm text-muted-foreground">
-            Notes on product design, AI engineering, and frontend systems. Sign
-            up for occasional updates.
+        {/* Bottom Left: Connect */}
+        <div className="col-[1] row-[2] border-b border-border p-5 md:p-6 max-lg:col-auto max-lg:row-auto">
+          <p className=" max-w-sm text-sm leading-relaxed text-muted-foreground">
+            Exploring UI/UX, software engineering, design systems, and the craft
+            of building thoughtful digital products.
           </p>
-          <form className="mt-7 flex border border-border">
-            <Input
-              aria-label="Email address"
-              type="email"
-              placeholder="Enter your email"
-              className="h-10 rounded-none border-0"
-            />
-            <Button
-              type="submit"
-              variant="ghost"
-              size="icon"
-              className="h-10 w-11 rounded-none border-l border-border"
-            >
-              <FiArrowUpRight aria-hidden="true" />
-            </Button>
-          </form>
+
+       
+{subscribed ? (
+  <div className="mt-7 flex h-10 max-w-md items-center border border-border px-3 text-sm">
+    <span className="mr-2 text-brand">✓</span>
+    Thanks for subscribing!
+  </div>
+) : (
+  <form
+    onSubmit={(e) => {
+      e.preventDefault();
+      setSubscribed(true);
+
+      setTimeout(() => {
+        setSubscribed(false);
+      }, 2000);
+    }}
+    className="mt-7 flex max-w-md border border-border"
+  >
+    <Input
+      aria-label="Email address"
+      type="email"
+      required
+      placeholder="Your email address"
+      className="h-10 rounded-none border-0 bg-transparent text-sm focus-visible:ring-0"
+    />
+
+    <Button
+      type="submit"
+      variant="ghost"
+      size="icon"
+      aria-label="Subscribe"
+      className="h-10 w-11 shrink-0 rounded-none border-l border-border hover:bg-muted"
+    >
+      <FiArrowUpRight aria-hidden="true" />
+    </Button>
+  </form>
+)}
+          <p className="mt-3 text-[0.6875rem] text-muted-foreground/70">
+            Occasional updates. No noise.
+          </p>
         </div>
 
-        <div className="footer-grid-address border-b border-border p-5 md:p-6">
-          <p className="type-label text-muted-foreground">Address</p>
+        {/* Bottom Column 2: Location */}
+        <div className="col-[2] row-[2] border-b border-border p-5 md:p-6 max-lg:col-auto max-lg:row-auto">
+          <p className="font-label text-[0.625rem] uppercase leading-none tracking-[0.14em] text-muted-foreground">
+            Based in
+          </p>
           <p className="mt-5 text-sm">
             Bhubaneswar,
             <br />
             Odisha, India
           </p>
           <Link
-            href="/contact"
+            href="https://maps.app.goo.gl/nizTwUGTJ7oxJDHT9"
+            target="_blank"
+            rel="noopener noreferrer"
             className="mt-10 inline-flex items-center gap-2 text-sm hover:text-brand"
           >
-            Direction <FiArrowUpRight />
+            View location <FiArrowUpRight aria-hidden="true" />
           </Link>
         </div>
 
-        <div className="footer-grid-business border-b border-border p-5 md:p-6">
-          
-          <div className="mt-7  pt-5">
-            <p className="type-label text-muted-foreground">
-              General inquiries
-            </p>
-            <a
-              className="mt-5 block text-sm hover:text-brand"
-              href="mailto:hello@chinmayakumardas.com"
-            >
-              chinmayakumardas2000@gmail.com
-            </a>
-          </div>
+        {/* Bottom Column 3: Email */}
+        <div className="col-[3] row-[2] border-b border-border p-5 md:p-6 max-lg:col-auto max-lg:row-auto">
+          <p className="font-label text-[0.625rem] uppercase leading-none tracking-[0.14em] text-muted-foreground">
+            Email
+          </p>
+          <a
+            className="mt-5 block text-sm hover:text-brand"
+            href="mailto:chinmayakumardas2000@gmail.com"
+          >
+            chinmayakumardas2000@gmail.com
+          </a>
         </div>
 
-        <div className="footer-grid-social border-b border-border p-5 md:p-6">
-          <p className="type-label text-muted-foreground">Social</p>
-          <div className="mt-5 grid grid-cols-2 gap-3 text-sm">
-            <a href="#" className="hover:text-brand">
-              Website
-            </a>
-            <a href="#" className="hover:text-brand">
-              Dribbble
-            </a>
-            <a href="#" className="hover:text-brand">
-              FWA
-            </a>
-            <a href="#" className="hover:text-brand">
-              Awwwards
-            </a>
-            <a href="#" className="hover:text-brand">
-              Instagram
-            </a>
-            <a href="#" className="hover:text-brand">
-              Linkedin
-            </a>
+        {/* Bottom Column 4: Social */}
+        <div className="col-[4] row-[2] border-b border-border p-5 md:p-6 max-lg:col-auto max-lg:row-auto">
+          <p className="font-label text-[0.625rem] uppercase leading-none tracking-[0.14em] text-muted-foreground">
+            Social
+          </p>
+          <div className="mt-5 flex flex-col gap-3 text-sm">
+            {footerSocials.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-brand"
+              >
+                {social.label}
+              </a>
+            ))}
           </div>
         </div>
       </div>
 
-      <div className="blueprint-wordmark overflow-hidden border-b border-border px-4 py-3 md:px-8">
-        <p aria-hidden="true">CHINMAYA</p>
+      {/* Large Name Section */}
+      <div className="overflow-hidden border-b border-border px-4 py-8 md:px-8 md:py-12">
+        <p
+          aria-hidden="true"
+          className="w-full whitespace-nowrap text-center text-[clamp(4rem,17vw,18rem)] font-bold leading-[0.72] tracking-[-0.085em]"
+        >
+          CHINMAYA
+        </p>
       </div>
 
-      <div className="footer-legal">
-        <span>
+      {/* Legal Footer Bar */}
+      <div className="grid min-h-11 grid-cols-[1fr_auto_auto_auto] items-center font-label text-[0.625rem] uppercase tracking-[0.08em] text-muted-foreground max-sm:grid-cols-2 [&>*]:flex [&>*]:h-full [&>*]:items-center [&>*]:border-l [&>*]:border-border [&>*]:px-4 [&>a:hover]:text-brand max-sm:[&>:first-child]:col-span-full max-sm:[&>:first-child]:min-h-11 max-sm:[&>:first-child]:border-b max-sm:[&>:first-child]:border-l-0 max-sm:[&>:first-child]:px-4 max-sm:[&>:nth-child(3)]:border-l">
+        <span className="border-l-0 pl-[var(--content-gutter)] max-sm:pl-4">
           © {new Date().getFullYear()} Chinmaya Kumar Das. All rights reserved.
         </span>
         <Link href="/privacy">Privacy policy</Link>
@@ -149,25 +210,48 @@ export function Footer() {
 function FooterLinkColumn({
   title,
   links,
+  className,
 }: {
   title: string;
-  links: string[][];
+  links: Array<[string, string | null]>;
+  className?: string;
 }) {
   return (
-    <div className="footer-grid-links border-b border-border p-5 md:p-6">
-      <p className="type-label text-muted-foreground">{title}</p>
+    <div
+      className={`${className ?? ""} border-b border-border p-5 md:p-6 max-lg:col-auto max-lg:row-auto flex flex-col justify-start`}
+    >
+      <p className="font-label text-[0.625rem] uppercase leading-none tracking-[0.14em] text-muted-foreground">
+        {title}
+      </p>
       <nav className="mt-7 flex flex-col gap-4 text-sm">
-        {links.map(([label, href]) => (
-          <Link
-            key={label}
-            href={href}
-            className={
-              label === "Contact us" ? "text-brand" : "hover:text-brand"
-            }
-          >
-            {label}
-          </Link>
-        ))}
+        {links.map(([label, href]) => {
+          if (href === null) {
+            return (
+              <div key={label} className="inline-flex items-center gap-2">
+                <span className="text-muted-foreground">{label}</span>
+                <span className="inline-flex items-center rounded-full bg-muted px-2 py-1 text-xs font-medium text-muted-foreground">
+                  Coming soon
+                </span>
+              </div>
+            );
+          }
+          const isExternal = href.startsWith("http");
+          return isExternal ? (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-brand"
+            >
+              {label}
+            </a>
+          ) : (
+            <Link key={label} href={href} className="hover:text-brand">
+              {label}
+            </Link>
+          );
+        })}
       </nav>
     </div>
   );
