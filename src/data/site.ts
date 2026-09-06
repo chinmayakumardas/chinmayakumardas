@@ -1,4 +1,4 @@
-import type { SiteConfig } from "@/types/site";
+import type { SiteConfig } from "@/types/index";
 
 export const siteConfig: SiteConfig = {
   name: "Chinmaya Kumar Das",

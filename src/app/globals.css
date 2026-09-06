@@ -1,26 +1,242 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  /* ─────────────────────────────
+     Colors
+  ───────────────────────────── */
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Brand */
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+
+  /* ───────────────────────────── Typography ───────────────────────────── */
+  --font-sans: var(--font-plus-jakarta-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-plus-jakarta-sans);
+  --font-label: var(--font-geist-mono);
+
+  /* ─────────────────────────────
+     Layout
+  ───────────────────────────── */
+
+  --container-portfolio: 1440px;
+
+  /* ─────────────────────────────
+     Radius
+  ───────────────────────────── */
+
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --background: #f4f4ef;
+  --foreground: #252525;
+
+  --card: #f2f0ea;
+  --card-foreground: #14140f;
+
+  --popover: #f2f0ea;
+  --popover-foreground: #14140f;
+
+  --primary: #252525;
+  --primary-foreground: #f4f4ef;
+
+  --secondary: #e9e6dc;
+  --secondary-foreground: #14140f;
+
+  --muted: #e9e6dc;
+  --muted-foreground: #8b8877;
+
+  --accent: #e9e6dc;
+  --accent-foreground: #14140f;
+
+  --brand: #ef4b2f;
+  --brand-foreground: #fffaf2;
+
+  --destructive: #c2410c;
+
+  --border: color-mix(in srgb, var(--foreground) 22%, transparent);
+  --input: #d8d4c8;
+  --ring: #8b8877;
+  --ruler: color-mix(in srgb, var(--foreground) 35%, transparent);
+  --line-strong: color-mix(in srgb, var(--foreground) 38%, transparent);
+  --button-hover: var(--brand);
+  --grid-line: color-mix(in srgb, var(--foreground) 8%, transparent);
+  --header-height: 3.5rem;
+  --content-gutter: 2rem;
+  --type-body: 0.875rem;
+  --type-meta: 0.625rem;
+
+  --radius: 0px;
+}
+
+.dark {
+  --background: #252525;
+  --foreground: #f4f4ef;
+
+  --card: #1c1c16;
+  --card-foreground: #f2f0ea;
+
+  --popover: #1c1c16;
+  --popover-foreground: #f2f0ea;
+
+  --primary: #f4f4ef;
+  --primary-foreground: #252525;
+
+  --secondary: #262620;
+  --secondary-foreground: #f2f0ea;
+
+  --muted: #262620;
+  --muted-foreground: #9c9887;
+
+  --accent: #262620;
+  --accent-foreground: #f2f0ea;
+
+  --brand: #ef6a4f;
+  --brand-foreground: #252525;
+
+  --destructive: #ef4444;
+
+  --border: color-mix(in srgb, var(--foreground) 25%, transparent);
+  --input: #33332a;
+  --ring: #6b6858;
+  --ruler: color-mix(in srgb, var(--foreground) 35%, transparent);
+  --line-strong: color-mix(in srgb, var(--foreground) 42%, transparent);
+  --button-hover: var(--brand);
+  --grid-line: color-mix(in srgb, var(--foreground) 12%, transparent);
+  --header-height: 3.5rem;
+  --content-gutter: 2rem;
+  --type-body: 0.875rem;
+  --type-meta: 0.625rem;
+}
+
+/* ─────────────────────────────
+   Base
+───────────────────────────── */
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: var(--background);
+    color: var(--foreground);
+
+    font-family: var(--font-plus-jakarta-sans);
+    font-weight: 500;
+
+    -webkit-font-smoothing: antialiased;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─────────────────────────────
+   Portfolio container
+───────────────────────────── */
+
+@layer components {
+  .container-portfolio {
+    width: 100%;
+    max-width: 1440px;
+    margin-inline: auto;
+    padding-inline: var(--content-gutter);
+  }
+
+  @media (max-width: 768px) {
+    .container-portfolio {
+      --content-gutter: 1.5rem;
+      padding-inline: var(--content-gutter);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .container-portfolio {
+      --content-gutter: 1rem;
+      padding-inline: var(--content-gutter);
+    }
+  }
+
+  /* Drafting /  corner tick */
+  .corner-tick {
+    @apply pointer-events-none absolute font-mono text-xs text-muted-foreground select-none;
+  }
+
+  .type-label {
+    font-family: var(--font-label);
+    font-size: 0.625rem;
+    line-height: 1;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .type-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.055em;
+  }
+
+  .text-display {
+    font-family: var(--font-display);
+    font-size: clamp(2.75rem, 7vw, 6.5rem);
+    font-weight: 700;
+    line-height: 0.92;
+    letter-spacing: -0.055em;
+  }
+
+  @media (max-width: 767px) {
+    :root,
+    .dark {
+      --header-height: 3.25rem;
+    }
+  }
+
+  .type-body {
+    font-size: var(--type-body);
+    line-height: 1.55;
+  }
 }
