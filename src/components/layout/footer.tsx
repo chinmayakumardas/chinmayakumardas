@@ -1,9 +1,12 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import { FiArrowUpRight } from "react-icons/fi";
 import { Button, Input } from "@/components/ui";
 import { socials } from "@/data/social";
 
-const profileLinks = [
+const profileLinks: Array<[string, string | null]> = [
   ["Home", "/"],
   ["About me", "/about"],
   ["Projects", "/projects"],
@@ -15,13 +18,15 @@ const resourceLinks: Array<[string, string | null]> = [
   ["Developer Utils", null],
 ];
 
-const legalLinks = [
+const legalLinks: Array<[string, string | null]> = [
   ["Privacy policy", "/privacy"],
   ["Terms & conditions", "/terms"],
   ["Cookie policy", "/cookies"],
 ];
 
 export function Footer() {
+
+  const [subscribed, setSubscribed] = useState(false);
   // Filter relevant social links for the footer
   const footerSocials = socials.filter((social) =>
     ["GITHUB", "LINKEDIN", "INSTAGRAM", "BEHANCE"].includes(social.label),
@@ -83,25 +88,43 @@ export function Footer() {
             of building thoughtful digital products.
           </p>
 
-          <form className="mt-7 flex max-w-md border border-border">
-            <Input
-              aria-label="Email address"
-              type="email"
-              placeholder="Your email address"
-              className="h-10 rounded-none border-0 bg-transparent text-sm focus-visible:ring-0"
-            />
+       
+{subscribed ? (
+  <div className="mt-7 flex h-10 max-w-md items-center border border-border px-3 text-sm">
+    <span className="mr-2 text-brand">✓</span>
+    Thanks for subscribing!
+  </div>
+) : (
+  <form
+    onSubmit={(e) => {
+      e.preventDefault();
+      setSubscribed(true);
 
-            <Button
-              type="submit"
-              variant="ghost"
-              size="icon"
-              aria-label="Subscribe"
-              className="h-10 w-11 shrink-0 rounded-none border-l border-border hover:bg-muted"
-            >
-              <FiArrowUpRight aria-hidden="true" />
-            </Button>
-          </form>
+      setTimeout(() => {
+        setSubscribed(false);
+      }, 2000);
+    }}
+    className="mt-7 flex max-w-md border border-border"
+  >
+    <Input
+      aria-label="Email address"
+      type="email"
+      required
+      placeholder="Your email address"
+      className="h-10 rounded-none border-0 bg-transparent text-sm focus-visible:ring-0"
+    />
 
+    <Button
+      type="submit"
+      variant="ghost"
+      size="icon"
+      aria-label="Subscribe"
+      className="h-10 w-11 shrink-0 rounded-none border-l border-border hover:bg-muted"
+    >
+      <FiArrowUpRight aria-hidden="true" />
+    </Button>
+  </form>
+)}
           <p className="mt-3 text-[0.6875rem] text-muted-foreground/70">
             Occasional updates. No noise.
           </p>

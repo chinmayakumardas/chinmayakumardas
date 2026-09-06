@@ -82,7 +82,7 @@ export function PageShell({ children, className }: PageShellProps) {
   return (
     <main
       className={cn(
-        "box-border h-screen w-screen overflow-hidden bg-background p-1.5 text-foreground sm:p-1.5",
+        "box-border h-screen w-screen overflow-hidden bg-background p-1.5 text-foreground ",
         className,
       )}
     >
