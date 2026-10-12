@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Chinmay Kumar Das
 
-## Getting Started
+### Frontend Engineer · Creative Developer in the Making
 
-First, run the development server:
+I build digital experiences through frontend engineering, creative thinking, and purposeful interaction.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+My journey into technology hasn't been linear. After studying Physics and pursuing an MCA, I began my professional career in a support role and eventually transitioned into frontend development. Since then, I've worked on real-world business applications, including e-commerce platforms, HRMS systems, and medicine billing software.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Working on these products has taught me that building software is about more than translating requirements into code. It's about understanding the problem, considering the people using the product, and making thoughtful decisions about how the solution should work.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### What I Do
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Build responsive, user-focused web interfaces.
+- Develop modern frontend applications using React, Next.js, and TypeScript.
+- Turn product requirements into practical, maintainable implementations.
+- Explore the relationship between engineering, visual design, and interaction.
 
-## Learn More
+### What I'm Exploring
 
-To learn more about Next.js, take a look at the following resources:
+I'm expanding my skills beyond conventional frontend development, with an interest in creative engineering, motion design, interactive experiences, and AI-powered applications.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+I enjoy exploring how technology and creativity can come together to make digital products more useful, expressive, and engaging.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### My Approach
 
-## Deploy on Vercel
+**Understand the problem. Think through the experience. Build with intention. Refine the details.**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+I believe good engineering combines technical clarity with curiosity, experimentation, and a willingness to keep learning.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### The Direction I'm Working Toward
+
+I'm working toward becoming an engineer who can contribute beyond implementation—someone who understands the problem, thinks critically about the experience, and brings thoughtful digital ideas to life.
+
+This portfolio is a record of that journey: the work I've done, the things I'm exploring, and the ideas I want to build next.
+
+---
+
+*Curious by nature. Building through practice. Always exploring what's possible.*
