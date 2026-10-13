@@ -8,7 +8,7 @@ export default function Home() {
         <Hero />
 
         {/* Work */}
-        <section id="work" className="section-y">
+        {/* <section id="work" className="section-y">
           <div className="container-site">
             <p className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
               Selected work
@@ -19,7 +19,7 @@ export default function Home() {
               Case studies coming soon.
             </p>
           </div>
-        </section>
+        </section> */}
 
         {/* About */}
         <section id="about" className="section-y border-t border-border">
