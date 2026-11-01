@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "motion/react";
+import { useState, useEffect } from "react";
+import { X, Plus } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import { site } from "@/content/site";
 import { cn } from "@/lib/utils";
 
@@ -12,103 +12,134 @@ export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   return (
-    <header className="sticky top-0 z-50 border-b border-border/70 bg-background/90 backdrop-blur-md">
-      <div className="container-main flex h-14 items-center justify-between sm:h-16">
-        <Link
-          href="/"
-          className="font-heading text-base font-semibold tracking-tight text-foreground transition-opacity hover:opacity-70 sm:text-lg"
-        >
-          CKD
-        </Link>
-
-        <nav className="hidden items-center gap-1 md:flex">
-          {site.nav.map((item) => {
-            const active =
-              item.href === "/"
-                ? pathname === "/"
-                : pathname.startsWith(item.href);
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "relative rounded-md px-3 py-2 text-sm font-medium transition-colors",
-                  active
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
-                )}
-              >
-                {item.label}
-                {active && (
-                  <motion.span
-                    layoutId="nav-indicator"
-                    className="absolute inset-x-3 -bottom-0.5 h-px rounded-full bg-foreground"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                  />
-                )}
-              </Link>
-            );
-          })}
-        </nav>
-
-        <div className="hidden md:block">
-          <Link href="/contact" className="btn btn-primary h-9 px-4 text-sm">
-            Let&apos;s talk
+    <>
+      <header className="sticky top-0 z-50 w-full">
+        <div className="mx-auto flex h-14 max-w-[1400px] items-center justify-between rounded-b-2xl bg-white px-5 shadow-[0_1px_0_0_rgba(0,0,0,0.04)] sm:h-16 sm:px-8 lg:px-12">
+          <Link
+            href="/"
+            className="shrink-0 font-heading text-[18px] font-semibold tracking-tight text-[#0a0a0a] sm:text-[20px]"
+          >
+            Qubesys
           </Link>
-        </div>
 
-        <button
-          type="button"
-          className="inline-flex size-10 items-center justify-center rounded-md text-foreground md:hidden"
-          onClick={() => setOpen((v) => !v)}
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-        >
-          {open ? <X size={20} /> : <Menu size={20} />}
-        </button>
-      </div>
+          <nav className="hidden items-center gap-0.5 md:flex">
+            {site.nav.map((item) => {
+              const active =
+                item.href === "/"
+                  ? pathname === "/"
+                  : pathname.startsWith(item.href);
+              return (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className={cn(
+                    "px-3 py-1.5 text-[13px] font-medium transition-colors",
+                    active
+                      ? "text-[#0a0a0a]"
+                      : "text-[#6b6b6b] hover:text-[#0a0a0a]"
+                  )}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </nav>
+
+          <div className="flex items-center gap-2">
+            <Link
+              href="/contact"
+              className="hidden h-9 items-center rounded-full bg-[#0a0a0a] px-5 text-[13px] font-medium text-white transition-opacity hover:opacity-90 md:inline-flex"
+            >
+              Request a Quote
+            </Link>
+            <button
+              type="button"
+              className="inline-flex size-9 items-center justify-center rounded-full bg-[#f0f0f2] text-[#0a0a0a] transition-transform active:scale-95 md:hidden"
+              onClick={() => setOpen(true)}
+              aria-label="Open menu"
+            >
+              <Plus size={18} strokeWidth={2} />
+            </button>
+          </div>
+        </div>
+      </header>
 
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.22 }}
-            className="overflow-hidden border-t border-border md:hidden"
+            className="fixed inset-0 z-[100] flex items-start justify-center bg-black/30 p-3 pt-3"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setOpen(false)}
           >
-            <nav className="flex flex-col gap-1 px-5 py-4">
-              {site.nav.map((item) => {
-                const active =
-                  item.href === "/"
-                    ? pathname === "/"
-                    : pathname.startsWith(item.href);
-                return (
+            <motion.div
+              className="w-full max-w-md overflow-hidden rounded-[1.35rem] bg-white shadow-2xl"
+              initial={{ opacity: 0, y: -16, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -12, scale: 0.98 }}
+              transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between px-5 py-4">
+                <span className="font-heading text-[16px] font-semibold text-[#0a0a0a]">
+                  Qubesys
+                </span>
+                <button
+                  type="button"
+                  className="inline-flex size-8 items-center justify-center rounded-full bg-[#f0f0f2] text-[#0a0a0a]"
+                  onClick={() => setOpen(false)}
+                  aria-label="Close menu"
+                >
+                  <X size={16} />
+                </button>
+              </div>
+              <nav className="px-5">
+                {site.nav.map((item) => (
                   <Link
-                    key={item.href}
+                    key={item.label}
                     href={item.href}
                     onClick={() => setOpen(false)}
-                    className={cn(
-                      "rounded-md px-3 py-3 text-base font-medium",
-                      active ? "text-foreground" : "text-muted-foreground"
-                    )}
+                    className="block border-t border-black/[0.06] py-[14px] text-[17px] font-medium text-[#0a0a0a]"
                   >
                     {item.label}
                   </Link>
-                );
-              })}
-              <Link
-                href="/contact"
-                onClick={() => setOpen(false)}
-                className="btn btn-primary mt-2 h-10 w-full"
-              >
-                Let&apos;s talk
-              </Link>
-            </nav>
+                ))}
+              </nav>
+              <div className="border-t border-black/[0.06] px-5 py-6 text-center">
+                <a
+                  href={`mailto:${site.email}`}
+                  className="text-[15px] font-medium text-[#0a0a0a]"
+                >
+                  {site.email}
+                </a>
+                <p className="mt-1 text-[13px] text-[#6b6b6b]">Based in Dubai.</p>
+                <div className="mt-3 flex justify-center gap-4">
+                  {Object.entries(site.social).map(([key, href]) => (
+                    <a
+                      key={key}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[13px] capitalize text-[#6b6b6b] hover:text-[#0a0a0a]"
+                    >
+                      {key === "x" ? "Twitter/X" : key}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }

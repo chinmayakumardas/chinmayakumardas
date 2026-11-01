@@ -1,50 +1,48 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "motion/react";
 import { site } from "@/content/site";
 
 export function AboutPreview() {
   return (
-    <section className="container-main section">
-      <div className="grid gap-10 md:grid-cols-12 md:gap-12">
-        <motion.div
-          className="md:col-span-5"
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <p className="text-label">About</p>
-          <h2 className="text-heading-2 mt-2 text-foreground">
-            Building experiences that feel inevitable
-          </h2>
-        </motion.div>
+    <section className="mx-auto max-w-[1400px] px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24">
+      <p className="text-[13px] text-[#9a9a9a]">/ About us</p>
 
-        <motion.div
-          className="space-y-5 md:col-span-7"
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.08 }}
-        >
-          <p className="text-body text-muted">
-            I&apos;m {site.name} — a front-end developer and digital experience
-            designer with nearly two years of experience. I care about clarity,
-            performance, and the details that make products feel considered.
+      <motion.h2
+        className="mt-3 max-w-3xl font-heading text-[clamp(1.85rem,4.8vw,3.5rem)] font-semibold leading-[1.08] tracking-[-0.03em] text-[#0a0a0a]"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      >
+        Development, branding, content, consulting. One team, no juggling.
+      </motion.h2>
+
+      <motion.p
+        className="mt-4 max-w-xl text-[15px] leading-relaxed text-[#6b6b6b] sm:text-[16px]"
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.45, delay: 0.06, ease: [0.22, 1, 0.36, 1] }}
+      >
+        Websites, content, social strategy, and the systems to keep it all
+        running.
+      </motion.p>
+
+      <motion.div
+        className="mt-10 flex flex-wrap gap-x-8 gap-y-3 border-t border-[#eee] pt-6 text-[13px] text-[#6b6b6b] sm:mt-12 sm:gap-x-10"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.4, delay: 0.12 }}
+      >
+        {site.stats.map((s) => (
+          <p key={s.label}>
+            <span className="font-semibold text-[#0a0a0a]">{s.value}</span>
+            <span className="text-[#9a9a9a]"> / {s.label}</span>
           </p>
-          <p className="text-body text-muted">
-            My work sits at the intersection of design systems and modern React /
-            Next.js engineering. I ship interfaces that are accessible,
-            maintainable, and aligned with business goals.
-          </p>
-          <Link
-            href="/about"
-            className="text-body-sm text-deep inline-flex transition-opacity hover:opacity-70"
-          >
-            More about me →
-          </Link>
-        </motion.div>
-      </div>
+        ))}
+      </motion.div>
     </section>
   );
 }

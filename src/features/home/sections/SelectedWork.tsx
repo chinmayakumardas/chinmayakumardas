@@ -2,68 +2,52 @@
 
 import Link from "next/link";
 import { motion } from "motion/react";
-import { ArrowUpRight } from "lucide-react";
 import { site } from "@/content/site";
 
 export function SelectedWork() {
   return (
-    <section className="container-main section">
-      <div className="mb-10 flex flex-col gap-3 sm:mb-14 sm:flex-row sm:items-end sm:justify-between">
+    <section className="mx-auto max-w-[1400px] px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="text-label">Selected work</p>
-          <h2 className="text-heading-2 mt-2 text-foreground">
-            Projects that ship
+          <p className="text-[13px] text-[#9a9a9a]">/ Blog</p>
+          <h2 className="mt-2 font-heading text-[clamp(1.75rem,4vw,2.75rem)] font-semibold tracking-[-0.03em] text-[#0a0a0a]">
+            Latest updates from us.
           </h2>
+          <p className="mt-2 max-w-md text-[15px] text-[#6b6b6b]">
+            Strategies, lessons, and behind-the-scenes from the world of content
+            and digital growth.
+          </p>
         </div>
         <Link
           href="/work"
-          className="text-body-sm text-muted transition-colors hover:text-foreground"
+          className="inline-flex h-10 items-center rounded-full border border-[#e5e5e5] px-5 text-[13px] font-medium text-[#0a0a0a] transition-colors hover:bg-[#f5f5f5]"
         >
-          View all →
+          View all blogs +
         </Link>
       </div>
 
-      <div className="grid gap-4">
-        {site.projects.map((project, i) => (
+      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {site.blogs.map((post, i) => (
           <motion.div
-            key={project.slug}
-            initial={{ opacity: 0, y: 16 }}
+            key={post.slug}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ delay: i * 0.06, duration: 0.35 }}
+            viewport={{ once: true, margin: "-5%" }}
+            transition={{
+              delay: i * 0.07,
+              duration: 0.45,
+              ease: [0.22, 1, 0.36, 1],
+            }}
           >
-            <Link
-              href={`/projects/${project.slug}`}
-              className="group flex flex-col gap-4 rounded-2xl border border-border bg-card p-6 transition-colors hover:border-foreground/20 sm:flex-row sm:items-center sm:justify-between sm:p-8"
-            >
-              <div>
-                <div className="mb-1 flex flex-wrap items-center gap-2">
-                  <h3 className="text-heading-3 text-foreground">
-                    {project.title}
-                  </h3>
-                  <span className="rounded-full border border-border px-2 py-0.5 text-caption">
-                    {project.year}
-                  </span>
-                </div>
-                <p className="text-body-sm text-muted">{project.role}</p>
-                <p className="text-body-sm text-muted mt-3 max-w-2xl">
-                  {project.summary}
-                </p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full bg-muted px-2.5 py-1 text-caption"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <ArrowUpRight
-                size={22}
-                className="shrink-0 text-foreground opacity-0 transition-opacity group-hover:opacity-100"
-              />
+            <Link href={`/projects/${post.slug}`} className="group block">
+              <div className="aspect-[4/3] overflow-hidden rounded-[1rem] bg-[#f0f0f2] transition-transform duration-300 group-hover:scale-[1.015]" />
+              <p className="mt-3 text-[12px] text-[#9a9a9a]">{post.date}</p>
+              <h3 className="mt-1 font-heading text-[17px] font-semibold tracking-tight text-[#0a0a0a]">
+                {post.title}
+              </h3>
+              <p className="mt-1 line-clamp-2 text-[13px] leading-relaxed text-[#6b6b6b]">
+                {post.excerpt}
+              </p>
             </Link>
           </motion.div>
         ))}
