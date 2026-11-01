@@ -1,48 +1,134 @@
+
 "use client";
 
-import { motion } from "motion/react";
-import { site } from "@/content/site";
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+import { Instrument_Serif } from "next/font/google";
+
+const serif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+});
+
+const steps = [
+  "Research",
+  "Strategy",
+  "Design",
+  "Development",
+  "Launch",
+];
 
 export function Approach() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const circles = gsap.utils.toArray<HTMLElement>(".approach-step");
+      const arrows = gsap.utils.toArray<SVGPathElement>(".approach-arrow");
+
+      gsap.set(circles, {
+        autoAlpha: 0,
+        scale: 0.85,
+        y: 12,
+      });
+
+      gsap.set(arrows, {
+        strokeDasharray: 100,
+        strokeDashoffset: 100,
+      });
+
+      const timeline = gsap.timeline({ delay: 0.3 });
+
+      timeline.from(".approach-heading", {
+        autoAlpha: 0,
+        y: 18,
+        duration: 0.65,
+        ease: "power3.out",
+      });
+
+      circles.forEach((circle, index) => {
+        timeline.to(circle, {
+          autoAlpha: 1,
+          scale: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "power3.out",
+        });
+
+        if (arrows[index]) {
+          timeline.to(arrows[index], {
+            strokeDashoffset: 0,
+            duration: 0.4,
+            ease: "power2.inOut",
+          });
+        }
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="approach"
-      className="w-full px-[var(--page-x)] py-16 sm:py-20 lg:py-24"
+      className="w-full overflow-hidden px-[var(--page-x)] py-16 sm:py-20 lg:py-24"
     >
-      <p className="text-[13px] text-[#9a9a9a]">/ Approach</p>
-      <div className="mt-3 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-16">
-        <h2 className="max-w-2xl font-heading text-[clamp(1.85rem,4.5vw,3.25rem)] font-semibold leading-[1.08] tracking-[-0.03em] text-[#0a0a0a]">
-          A simple, clear process from first call to launch.
+      {/* Heading */}
+      <div className="approach-heading">
+        <p className="text-[13px] text-[#9a9a9a]">
+          / How I work
+        </p>
+
+        <h2 className="mt-2 font-heading text-[clamp(1.75rem,4vw,2.75rem)] font-semibold tracking-[-0.03em] text-[#0a0a0a]">
+          My approach.
         </h2>
-        <p className="max-w-xs text-[14px] leading-relaxed text-[#6b6b6b] sm:text-[15px] lg:pb-1 lg:text-right">
-          No surprises — you always know what&apos;s happening and what&apos;s next.
+
+        <p className="mt-2 max-w-md text-[15px] leading-relaxed text-[#6b6b6b]">
+          A thoughtful process that turns ideas into meaningful digital
+          experiences, from initial research to final launch.
         </p>
       </div>
 
-      <div className="mt-10 grid gap-x-6 gap-y-8 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4">
-        {site.approach.map((step, i) => (
-          <motion.div
-            key={step.title}
-            className="border-t border-[#e5e5e5] pt-5"
-            initial={{ opacity: 0, y: 22 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-8%" }}
-            transition={{
-              delay: i * 0.08,
-              duration: 0.55,
-              ease: [0.22, 1, 0.36, 1],
-            }}
+   
+{/* Sequential process flow */}
+<div className="mt-12 overflow-x-auto pb-3">
+  <ol className="flex min-w-[850px] items-center">
+    {steps.map((step, index) => (
+      <li key={step} className="flex shrink-0 items-center">
+        {/* Circle */}
+        <div className="approach-step relative z-10 flex size-[145px] shrink-0 items-center justify-center rounded-full border border-dashed border-[#c9c9c9] bg-white">
+          <span
+            className={`${serif.className} px-2 text-center text-[22px] tracking-tight text-[#0a0a0a]`}
           >
-            <span className="text-[13px] text-[#9a9a9a]">{step.index}</span>
-            <h3 className="mt-6 font-heading text-[clamp(1.5rem,2.4vw,2rem)] font-semibold tracking-[-0.03em] text-[#0a0a0a] sm:mt-10">
-              {step.title}
-            </h3>
-            <p className="mt-2 max-w-[260px] text-[14px] leading-relaxed text-[#6b6b6b]">
-              {step.text}
-            </p>
-          </motion.div>
-        ))}
-      </div>
+            {step}
+          </span>
+        </div>
+
+        {/* Edge-to-edge arrow */}
+        {index !== steps.length - 1 && (
+          <svg
+            viewBox="0 0 100 20"
+            className="approach-connector -ml-px h-5 w-[65px] shrink-0 overflow-visible"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              className="approach-arrow"
+              d="M 0 10 H 94 M 87 3 L 94 10 L 87 17"
+              stroke="#999"
+              strokeWidth="1.4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        )}
+      </li>
+    ))}
+  </ol>
+</div>
+
     </section>
   );
 }
