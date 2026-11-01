@@ -35,7 +35,7 @@ export const menuItems: MenuItem[] = [
     label: "Contact",
     href: "/#contact",
     children: [
-      { label: "Book a 1:1 call", href: site.bookCall.href },
+      { label: "Lets Talk", href: site.letstalk.href },
       { label: "Email me", href: `mailto:${site.email}` },
       { label: "WhatsApp", href: site.whatsapp },
     ],

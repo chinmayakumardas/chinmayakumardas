@@ -29,10 +29,10 @@ export function ContactCTA() {
 
         <div className="mt-9 flex flex-wrap items-center gap-3">
           <Link
-            href={site.bookCall.href}
+            href={site.letstalk.href}
             className="inline-flex h-11 items-center rounded-full bg-white px-6 text-[13px] font-medium text-[#0a0a0a] transition-opacity hover:opacity-90"
           >
-            <FlipText>{site.bookCall.label} →</FlipText>
+            <FlipText>{site.letstalk.label} →</FlipText>
           </Link>
           <a
             href={`mailto:${site.email}`}

@@ -79,7 +79,7 @@ export function CtaLink({
 }) {
   return (
     <Link
-      href={site.bookCall.href}
+      href={site.letstalk.href}
       onClick={onClick}
       className={cn(
         buttonVariants({ variant: "default", size: "default" }),
@@ -88,8 +88,8 @@ export function CtaLink({
       )}
     >
       <FlipText>
-        <span className="sm:hidden">{site.bookCall.shortLabel}</span>
-        <span className="hidden sm:inline">{site.bookCall.label}</span>
+        <span className="sm:hidden">{site.letstalk.shortLabel}</span>
+        <span className="hidden sm:inline">{site.letstalk.label}</span>
       </FlipText>
     </Link>
   );
