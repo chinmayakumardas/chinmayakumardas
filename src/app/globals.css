@@ -124,7 +124,7 @@
   --sidebar-border: #e5e5e5;
   --sidebar-ring: #0a0a0a;
 
-  /* Radius — Qubesys soft language */
+  /* Radius — soft rounded language */
   --radius: 0.75rem;
   --radius-sm-token: 0.25rem;
   --radius-md-token: 0.5rem;
@@ -136,8 +136,10 @@
   --radius-header: 1.25rem;
 
   /* Layout */
-  --container-max: 1400px;
-  --container-pad: 1.25rem;
+  /* Small, premium side margin used by header, sections and footer */
+  --page-x: clamp(0.625rem, 2vw, 2.5rem);
+  --container-max: none;
+  --container-pad: var(--page-x);
   --section-y: 4rem;
 
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.04);
@@ -187,6 +189,8 @@
 
   html {
     scroll-behavior: smooth;
+    /* No visible page scrollbar (also avoids layout shift when the menu locks scroll) */
+    scrollbar-width: none;
     -webkit-text-size-adjust: 100%;
   }
 
@@ -203,6 +207,19 @@
     font-weight: 600;
     letter-spacing: -0.025em;
     line-height: 1.15;
+  }
+
+  /* Lenis smooth scroll + menu scroll lock */
+  html.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  html::-webkit-scrollbar {
+    display: none;
+  }
+
+  html.menu-open {
+    overflow: hidden;
   }
 
   ::selection {
@@ -226,18 +243,6 @@
     max-width: var(--container-max);
     margin-inline: auto;
     padding-inline: var(--container-pad);
-  }
-
-  @media (min-width: 640px) {
-    .container-main {
-      --container-pad: 2rem;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .container-main {
-      --container-pad: 3rem;
-    }
   }
 
   .section {

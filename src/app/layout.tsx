@@ -20,13 +20,13 @@ const urbanist = Urbanist({
 
 export const metadata: Metadata = {
   title: {
-    default: `${site.name} · ${site.shortTitle}`,
+    default: `${site.name} — ${site.shortTitle}`,
     template: `%s · ${site.name}`,
   },
   description: site.description,
   metadataBase: new URL(site.url),
   openGraph: {
-    title: `${site.name} · ${site.shortTitle}`,
+    title: `${site.name} — ${site.shortTitle}`,
     description: site.description,
     url: site.url,
     siteName: site.name,

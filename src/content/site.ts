@@ -1,89 +1,83 @@
+import { urls } from "./urls";
+
+const email = "chinmayakumardas07@gmail.com";
+
 export const site = {
-  name: "Qubesys",
-  title: "Websites, Apps & Digital Systems",
-  shortTitle: "Digital & Social, Under One Roof",
+  name: "Chinmaya Kumar",
+  handle: "chinmayakumardas",
+  role: "Creative Front-End Developer",
+  shortTitle: "Creative Front-End Developer",
   description:
-    "We develop the websites, apps, and systems for your business. Digital and social, under one roof.",
-  url: "https://qubesys.com",
-  email: "help@qubesys.com",
-  location: "Available for Dubai",
-  availability: "Serving customers since 18 years",
+    "Chinmaya Kumar is a creative front-end developer in Bhubaneswar, India — landing pages, UI/UX design and custom software for brands that want to grow.",
+  url: "https://chinmayakumardas.com",
+  email,
+  phone: "+91 6370073215",
+  phoneHref: "tel:+916370073215",
+  whatsapp: "https://wa.me/916370073215",
+  location: "Bhubaneswar, India",
+  availability: "Available for new projects",
+  year: 2026,
 
-  nav: [
-    { href: "/", label: "Home" },
-    { href: "/work", label: "Apps" },
-    { href: "/about", label: "Services" },
-    { href: "/work", label: "Customers" },
-    { href: "/about", label: "Partner" },
-    { href: "/contact", label: "Blog" },
-  ],
-
-  social: {
-    x: "https://twitter.com/qubesys",
-    instagram: "https://www.instagram.com/qubesys",
-    linkedin: "https://www.linkedin.com/company/qubesys",
+  /** Primary call-to-action (replaces "Request a Quote").
+   *  Swap `href` for a Calendly / Cal.com link whenever you have one. */
+  bookCall: {
+    label: "Book a 1:1 call",
+    shortLabel: "Book a call",
+    href: `mailto:${email}?subject=${encodeURIComponent("Let's book a 1:1 call")}`,
   },
 
-  stats: [
-    { value: "18+", label: "Years of Experience" },
-    { value: "1M+", label: "followers online" },
-    { value: "34+", label: "Countries customers served" },
-    { value: "97%", label: "Customer satisfaction rate" },
-    { value: "340+", label: "Projects completed" },
+  /** Only these five. Work / Services / Contact scroll to their home sections
+   *  for now — point them at /work, /services, /contact when those pages exist. */
+  nav: [
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
+    { href: "/#work", label: "Work" },
+    { href: "/#services", label: "Services" },
+    { href: "/#contact", label: "Contact" },
   ],
+
+  social: urls.social,
+
+  offers: ["Landing Pages", "UI/UX Design", "Custom Software"],
 
   services: [
-    { title: "Websites & Apps", index: "1" },
-    { title: "CRM & ERPs", index: "2" },
-    { title: "Content Creation", index: "3" },
-    { title: "Strategy & Consulting", index: "4" },
-  ],
-
-  testimonials: [
     {
-      quote:
-        "Truly miracle. Did an outstanding job immediately after discussion. And the quality, simply perfect.",
-      name: "Steven Goh",
-      role: "IT Manager, Canon Singapore",
-      rating: 5,
+      index: "01",
+      title: "Landing Pages",
+      text: "Fast, responsive, conversion-focused pages that turn visitors into customers.",
     },
     {
-      quote:
-        "From the first discussion to launch, the work was organized and dependable. The final site reflects our company much better.",
-      name: "Glen Dunn",
-      role: "BB Exports LLC",
-      rating: 5,
+      index: "02",
+      title: "UI/UX Design",
+      text: "Clear flows and polished interfaces, designed in Figma and ready to build.",
     },
     {
-      quote:
-        "Working with QubeSys Team is like having your own personal programmer looking out for me. It's terrific!",
-      name: "Brett Guff",
-      role: "Head Correspondent, Economic Times",
-      rating: 5,
+      index: "03",
+      title: "Custom Software Development",
+      text: "Web apps, dashboards and internal tools built with Next.js, React and TypeScript.",
     },
   ],
 
-  blogs: [
+  approach: [
     {
-      date: "Sep 15, 2026",
-      title: "All in One Social Content Creator & Auto Poster to all Social Media Channels",
-      excerpt:
-        "Turn one long video into branded short-form clips, then schedule them across every channel from one workflow.",
-      slug: "social-content-creator",
+      index: "01",
+      title: "Discover",
+      text: "We talk goals, users and scope, so we build the right thing first.",
     },
     {
-      date: "Jul 15, 2026",
-      title: "SocioFit is Coming Soon to Android and iOS",
-      excerpt:
-        "SocioFit turns your workouts into clean, shareable stickers with real numbers, your city, and the moment it happened.",
-      slug: "sociofit-coming-soon",
+      index: "02",
+      title: "Design",
+      text: "Wireframes and polished UI, reviewed with you before a line of code.",
     },
     {
-      date: "Jun 26, 2026",
-      title: "Personal Branding for Business Owners: Why It Matters Now",
-      excerpt:
-        "Customers trust people more than logos. Here's why building your personal brand as an owner drives real growth for your business.",
-      slug: "personal-branding",
+      index: "03",
+      title: "Build",
+      text: "Clean, accessible, responsive front-end with modern, maintainable code.",
+    },
+    {
+      index: "04",
+      title: "Launch",
+      text: "Testing, performance tuning, deployment and support after go-live.",
     },
   ],
 
@@ -150,5 +144,12 @@ export const site = {
     },
   ],
 } as const;
+
+export const socialLinks = [
+  { label: "LinkedIn", href: site.social.linkedin },
+  { label: "GitHub", href: site.social.github },
+  { label: "Instagram", href: site.social.instagram },
+  { label: "Twitter/X", href: site.social.x },
+] as const;
 
 export type Project = (typeof site.projects)[number];

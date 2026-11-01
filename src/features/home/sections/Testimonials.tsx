@@ -14,7 +14,7 @@ export function Testimonials() {
   const next = () => setIndex((i) => (i === items.length - 1 ? 0 : i + 1));
 
   return (
-    <section className="mx-auto max-w-[1400px] px-5 py-6 sm:px-8 lg:px-12">
+    <section id="testimonials" className="scroll-mt-14 w-full px-[var(--page-x)] py-6">
       <motion.div
         className="rounded-[1.5rem] bg-[#0a0a0a] px-6 py-10 text-white sm:rounded-[1.75rem] sm:px-10 sm:py-14 lg:px-14"
         initial={{ opacity: 0, y: 24 }}
