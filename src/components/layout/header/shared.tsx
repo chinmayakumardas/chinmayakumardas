@@ -69,7 +69,7 @@ export function Logo({
   );
 }
 
-/** Primary call-to-action: "Book a 1:1 call" */
+/** Primary call-to-action: */
 export function CtaLink({
   className,
   onClick,
@@ -79,7 +79,7 @@ export function CtaLink({
 }) {
   return (
     <Link
-      href={site.bookCall.href}
+      href={site.letstalk.href}
       onClick={onClick}
       className={cn(
         buttonVariants({ variant: "default", size: "default" }),
@@ -88,8 +88,8 @@ export function CtaLink({
       )}
     >
       <FlipText>
-        <span className="sm:hidden">{site.bookCall.shortLabel}</span>
-        <span className="hidden sm:inline">{site.bookCall.label}</span>
+        <span className="sm:hidden">{site.letstalk.shortLabel}</span>
+        <span className="hidden sm:inline">{site.letstalk.label}</span>
       </FlipText>
     </Link>
   );
@@ -217,29 +217,54 @@ export function MenuList({
   );
 }
 
+// export function MenuImage({ className }: { className?: string }) {
+//   return (
+//     <div
+//       data-image
+//       className={cn(
+//         "relative overflow-hidden rounded-[1.1rem] bg-[#1a1a1a]",
+//         className
+//       )}
+//     >
+//       <div data-image-inner className="absolute inset-0">
+//         <Image
+//           src="/images/profile-full.png"
+//           alt="Profile"
+//           fill
+//           loading="eager"
+//           className="object-cover object-center"
+//           sizes="(max-width: 1024px) 100vw, 50vw"
+//         />
+//       </div>
+//     </div>
+//   );
+// }
 export function MenuImage({ className }: { className?: string }) {
   return (
     <div
       data-image
       className={cn(
-        "relative overflow-hidden rounded-[1.1rem] bg-[#1a1a1a]",
+        "relative isolate overflow-hidden rounded-[var(--radius-header)] bg-[#ececef]",
         className
       )}
     >
-      <div data-image-inner className="absolute inset-0">
+      <div
+        data-image-inner
+        className="relative aspect-[4/5] w-full overflow-hidden rounded-[inherit]  sm:aspect-[16/11] lg:aspect-[1.74/1]"
+      >
         <Image
-          src="/images/menu-workspace.jpg"
-          alt="Workspace"
+          src="/images/profile-full.png"
+          alt="Profile"
           fill
-          loading="eager"
-          className="object-cover object-center"
+          priority
+          quality={90}
           sizes="(max-width: 1024px) 100vw, 50vw"
+          className="object-cover object-top"
         />
       </div>
     </div>
   );
 }
-
 export function MenuFooter({ className }: { className?: string }) {
   return (
     <div

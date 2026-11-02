@@ -20,20 +20,19 @@ export const site = {
 
   /** Primary call-to-action (replaces "Request a Quote").
    *  Swap `href` for a Calendly / Cal.com link whenever you have one. */
-  bookCall: {
-    label: "Book a 1:1 call",
-    shortLabel: "Book a call",
-    href: `mailto:${email}?subject=${encodeURIComponent("Let's book a 1:1 call")}`,
-  },
+ letstalk: {
+  label: "Lets talk",
+  shortLabel: "Lets talk",
+  href: "/contact",
+},
 
   /** Only these five. Work / Services / Contact scroll to their home sections
    *  for now — point them at /work, /services, /contact when those pages exist. */
   nav: [
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
-    { href: "/#work", label: "Work" },
-    { href: "/#services", label: "Services" },
-    { href: "/#contact", label: "Contact" },
+    { href: "/work", label: "Work" },
+    { href: "/services", label: "Services" },
   ],
 
   social: urls.social,
