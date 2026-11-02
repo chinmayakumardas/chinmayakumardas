@@ -2,7 +2,6 @@
 
 import { NextResponse } from "next/server";
 import { resend } from "@/lib/resend";
-
 export async function POST(request: Request) {
   try {
     const { name, phone, email, message } = await request.json();
