@@ -7,8 +7,8 @@ export const urls = {
     instagram: "https://www.instagram.com/builtby.kumar/",
     linkedin: "https://www.linkedin.com/in/itschinmay/",
     x: "https://x.com/builtbykumar",
-    youtube: "https://www.youtube.com/@chinmayakumardas",
+    youtube: "https://www.youtube.com/@builtbychinmay",
     dribbble: "https://dribbble.com/chinmayakumardas",
-    behance: "https://www.behance.net/chinmayakumardas",
+    behance: "https://www.behance.net/chinmaykumar",
   },
 } as const;
