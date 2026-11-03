@@ -3,6 +3,9 @@ import { Inter, Urbanist } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { GoogleAnalytics } from "@next/third-parties/google";
+import { personSchema, websiteSchema } from "@/lib/schema";
+
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
 import { site } from "@/content/site";
 
@@ -45,11 +48,25 @@ export default function RootLayout({
       className={`${inter.variable} ${urbanist.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
+             <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(personSchema),
+            }}
+          />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteSchema),
+          }}
+        />
         <SmoothScroll>
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
         </SmoothScroll>
+        <GoogleAnalytics gaId="G-5DJS4H3VT4" />
       </body>
     </html>
   );
