@@ -1,16 +1,19 @@
 import { Hero } from "@/features/home/sections/Hero";
 import { SelectedWork } from "@/features/home/sections/SelectedWork";
-import { Services } from "@/features/home/sections/Services";
+import { Needs } from "@/features/home/sections/Needs";
 import { Approach } from "@/features/home/sections/Approach";
+import { Services } from "@/features/home/sections/Services";
 import { ContactCTA } from "@/features/home/sections/ContactCTA";
 
+/** Home follows the reference: hero → work → needs → approach → services → contact. */
 export default function HomePage() {
   return (
     <>
       <Hero />
       <SelectedWork />
-      <Services />
+      <Needs />
       <Approach />
+      <Services />
       <ContactCTA />
     </>
   );

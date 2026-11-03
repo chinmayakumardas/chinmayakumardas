@@ -62,9 +62,7 @@ export function Logo({
         className
       )}
     >
-      <FlipText>
         chinmaya<span className="text-[#8cc63f]">kumar</span>
-      </FlipText>
     </Link>
   );
 }
