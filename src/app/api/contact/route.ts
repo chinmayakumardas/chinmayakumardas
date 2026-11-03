@@ -3,7 +3,6 @@ import { getResend, mailConfig } from "@/lib/resend";
 import { escapeHtml, validateContact } from "@/lib/contact";
 import type { ContactResponse } from "@/types/contact";
 
-export const runtime = "nodejs";
 
 /* Tiny in-memory rate limit: 5 messages / 10 min / IP.
    Per server instance — fine for a portfolio; use Upstash/Redis for a strict limit on serverless. */
