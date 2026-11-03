@@ -9,8 +9,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
 
-import { GoogleAnalytics } from "@next/third-parties/google";
-
+import { GoogleTagManager } from "@next/third-parties/google";
 import { personSchema, websiteSchema } from "@/lib/schema";
 import { site } from "@/content/site";
 
@@ -77,8 +76,8 @@ export default function RootLayout({
           <Footer />
         </SmoothScroll>
 
-        {/* Google Analytics */}
-        <GoogleAnalytics gaId="G-5DJS4H3VT4" />
+        {/* Google tag  manager */}
+        <GoogleTagManager gtmId="GTM-KRK7ZQZC" />
       </body>
     </html>
   );
