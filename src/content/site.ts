@@ -38,7 +38,21 @@ export const site = {
   social: urls.social,
 
   offers: ["Landing Pages", "UI/UX Design", "Custom Software"],
+about: {
+    eyebrow: "A little about me",
+    title: "Design-minded development.",
+    text: "I'm Chinmaya, a creative front-end developer focused on building clear, useful digital experiences through thoughtful design and development.",
+    chips: [
+      "Front-End Development",
+      "UI/UX Design",
+      "Landing Pages",
+    ],
+  },
 
+  stats: [
+    { value: 2, suffix: "+", label: "Years of experience" },
+    { value: 3, suffix: "", label: "Core service areas" },
+  ],
   services: [
     {
       index: "01",
@@ -209,11 +223,14 @@ export const site = {
   ],
 } as const;
 
-export const socialLinks = [
-  { label: "LinkedIn", href: site.social.linkedin },
-  { label: "GitHub", href: site.social.github },
-  { label: "Instagram", href: site.social.instagram },
-  { label: "Twitter/X", href: site.social.x },
-] as const;
 
+export const socialLinks = [
+  { id: "linkedin", label: "LinkedIn", href: site.social.linkedin },
+  { id: "github", label: "GitHub", href: site.social.github },
+  { id: "instagram", label: "Instagram", href: site.social.instagram },
+  { id: "x", label: "Twitter/X", href: site.social.x },
+] as const;
 export type Project = (typeof site.projects)[number];
+
+
+
