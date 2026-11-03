@@ -10,7 +10,7 @@ export const site = {
   description:
     "Chinmaya Kumar is a creative front-end developer in Bhubaneswar, India — landing pages, UI/UX design and custom software for brands that want to grow.",
   url: "https://chinmayakumardas.com",
-  email,
+  email:"chinmayakumardas07@gmail.com",
   phone: "+91 6370073215",
   phoneHref: "tel:+916370073215",
   whatsapp: "https://wa.me/916370073215",

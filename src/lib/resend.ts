@@ -21,7 +21,7 @@ export function getResend() {
  */
 export function mailConfig() {
   return {
-    to: process.env.CONTACT_TO_EMAIL?.trim() || site.email,
-    from: process.env.CONTACT_FROM_EMAIL?.trim() || "Portfolio <onboarding@resend.dev>",
+    to: site.email,
+    from:  "Portfolio <onboarding@resend.dev>",
   };
 }
