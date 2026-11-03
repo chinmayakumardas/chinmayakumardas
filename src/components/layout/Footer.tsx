@@ -1,109 +1,124 @@
 import Link from "next/link";
 import { site, socialLinks } from "@/content/site";
 import { FlipText } from "@/components/common/FlipText";
-
+import { SplitReveal } from "@/components/gsap/SplitReveal";
+import { RiseText } from "@/components/common/RevealText";
+import { BackToTop } from "./BackToTop";
+import { ArrowUpRight, Heart } from "lucide-react";
 /* ------------------------------------------------------------------ */
-/* Content — same three link columns as the reference footer.          */
-/* Change labels / hrefs here only.                                    */
+/* Content — change labels / hrefs here only.                          */
 /* ------------------------------------------------------------------ */
 
-const tagline =
-  "We help you grow your online or offline business with our cost-effective solutions.";
+const statement = "Websites that sell, from idea to launch. Designed and built around your goals.";
 
-const quickLinks = [
-  { label: "Services", href: "/services" },
-  { label: "Work", href: "/work" },
-  { label: "About", href: "/about" },
+const navLinks = [
+  { label: "Work", href: "/#work" },
+  { label: "Services", href: "/#services" },
+  { label: "Approach", href: "/#approach" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const legalLinks = [
   { label: "Terms & Conditions", href: "/terms" },
   { label: "Privacy Policy", href: "/privacy" },
-  { label: "Contact", href: "/contact" },
 ];
 
-/* Soft film-grain, drawn inline so there is no extra image to load. */
-const grain =
-  "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")";
-
-const linkClass =
-  "block text-[13px] font-medium leading-none text-white";
+const colTitle = "mb-4 text-[14px] font-medium tracking-[-0.02em] text-[#8a8a8a]";
+const linkClass = "inline-flex items-center gap-1.5 text-[15px] font-medium leading-none tracking-[-0.03em] text-[#0a0a0a]";
 
 export function Footer() {
   return (
-    <footer className="relative isolate overflow-hidden bg-[#141414] text-white">
-      {/* grain overlay */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]"
-        style={{ backgroundImage: grain }}
-      />
+    <footer className="w-full px-[var(--page-x)] pb-[var(--page-x)] pt-1">
+      <div className="relative isolate flex flex-col overflow-hidden rounded-[var(--radius-header)] bg-[#ececef] text-[#0a0a0a] lg:min-h-[calc(100svh-4.25rem)]">
+        {/* ---------- top: statement + contact | link columns ---------- */}
+        <div className="grid gap-12 p-5 pt-10 sm:p-7 sm:pt-12 lg:grid-cols-2 lg:gap-8 lg:p-8 lg:pt-10">
+          <div className="max-w-[34rem]">
+            <p className="type-statement">
+              <SplitReveal text={statement} />
+            </p>
 
-      <div className="flex min-h-[420px] w-full flex-col justify-between gap-16 px-[var(--page-x)] pb-8 pt-12 sm:min-h-[480px] sm:pt-16 lg:min-h-[540px] lg:pt-24 lg:pb-10">
-        {/* ---------- top: tagline + contact ---------- */}
-      <div className="max-w-[26rem]">
-  <p className="text-[16px] leading-[1.3] tracking-[-0.03em] text-white/60 md:text-[20px]">
-    {tagline}
+            <a
+              href={`mailto:${site.email}`}
+              className="mt-8 block break-all text-[clamp(1.1rem,1.6vw,1.4rem)] font-medium leading-tight tracking-[-0.04em]"
+            >
+              <FlipText>{site.email}</FlipText>
+            </a>
+            <p className="mt-1.5 text-[13px] tracking-[-0.02em] text-[#6b6b6b]">Based in {site.location}</p>
+          </div>
+
+          <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:pl-[10%]">
+            <div>
+              <p className={colTitle}>Social</p>
+              <ul className="space-y-3.5">
+                {socialLinks.map((s) => (
+                  <li key={s.label}>
+                    <a href={s.href} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                      <FlipText>{s.label}</FlipText>
+                      <ArrowUpRight className="size-3.5 text-[#6b6b6b]" aria-hidden />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <p className={colTitle}>Navigation</p>
+              <ul className="space-y-3.5">
+                {navLinks.map((l) => (
+                  <li key={l.label}>
+                    <Link href={l.href} className={linkClass}>
+                      <FlipText>{l.label}</FlipText>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <p className={colTitle}>Legal</p>
+              <ul className="space-y-3.5">
+                {legalLinks.map((l) => (
+                  <li key={l.label}>
+                    <Link href={l.href} className={linkClass}>
+                      <FlipText>{l.label}</FlipText>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+
+{/* ---------- giant name (decorative) ---------- */}
+<p
+  aria-hidden
+  className="type-display mt-auto select-none overflow-hidden whitespace-nowrap px-5 pt-16 text-[13.2vw] leading-[0.85] sm:px-7 lg:px-8 lg:pt-10"
+>
+  <RiseText text={site.name} />
+</p>
+
+{/* ---------- bottom bar: copyright · tagline · back to top ---------- */}
+<div className="grid items-center gap-4 p-5 pt-6 text-[13px] tracking-[-0.02em] text-[#6b6b6b] sm:p-7 sm:pt-6 md:grid-cols-[1fr_auto_1fr] lg:p-8 lg:pt-6">
+  <p>© {site.year}</p>
+
+  <p className="flex items-center gap-1 md:justify-self-center">
+    Made with
+    <Heart
+      className="size-3 fill-red-500 text-red-500"
+      aria-label="love"
+    />
+    by Chinmaya
   </p>
 
-  <a
-    href={`mailto:${site.email}`}
-    className="mt-7 block break-all text-[clamp(1.2rem,2vw,1.65rem)] font-medium leading-tight tracking-[-0.04em] text-white"
-  >
-    <FlipText>{site.email}</FlipText>
-  </a>
-
-  <p className="mt-2 text-[12px] font-medium text-white/60">
-    Based in {site.location}
-  </p>
+  <div className="md:justify-self-end">
+    <BackToTop />
+  </div>
 </div>
 
-        {/* ---------- bottom: link columns + credit ---------- */}
-        <div className="grid grid-cols-2 items-end gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-[1fr_1fr_1fr_auto]">
-          <ul className="space-y-3">
-            {quickLinks.map((l) => (
-              <li key={l.label}>
-                <Link href={l.href} className={linkClass}>
-                  <FlipText>{l.label}</FlipText>
-                </Link>
-              </li>
-            ))}
-          </ul>
+      
 
-          <ul className="space-y-3">
-            {legalLinks.map((l) => (
-              <li key={l.label}>
-                <Link href={l.href} className={linkClass}>
-                  <FlipText>{l.label}</FlipText>
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          <ul className="space-y-3">
-            {socialLinks.map((s) => (
-              <li key={s.label}>
-                <a
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={linkClass}
-                >
-                  <FlipText>{s.label}</FlipText>
-                </a>
-              </li>
-            ))}
-          </ul>
-
-          <p className="col-span-2 text-[13px] font-medium leading-[1.6] text-white sm:col-span-3 lg:col-span-1 lg:text-right">
-            <span className="text-white/60">Made in India by </span>
-            {site.name}
-            <br />
-            <span className="text-white/60">
-              © {site.year} All rights reserved
-            </span>
-          </p>
-        </div>
+      
       </div>
     </footer>
   );

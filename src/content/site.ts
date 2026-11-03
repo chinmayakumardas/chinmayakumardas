@@ -44,45 +44,106 @@ export const site = {
       index: "01",
       title: "Landing Pages",
       text: "Fast, responsive, conversion-focused pages that turn visitors into customers.",
+      tags: ["Next.js", "GSAP", "SEO"],
+      time: "1–2 weeks",
     },
     {
       index: "02",
       title: "UI/UX Design",
       text: "Clear flows and polished interfaces, designed in Figma and ready to build.",
+      tags: ["Figma", "Prototype", "Design system"],
+      time: "1–3 weeks",
     },
     {
       index: "03",
       title: "Custom Software Development",
       text: "Web apps, dashboards and internal tools built with Next.js, React and TypeScript.",
+      tags: ["React", "TypeScript", "Dashboards"],
+      time: "4+ weeks",
     },
   ],
 
-  approach: [
-    {
-      index: "01",
-      title: "Discover",
-      text: "We talk goals, users and scope, so we build the right thing first.",
-    },
-    {
-      index: "02",
-      title: "Design",
-      text: "Wireframes and polished UI, reviewed with you before a line of code.",
-    },
-    {
-      index: "03",
-      title: "Build",
-      text: "Clean, accessible, responsive front-end with modern, maintainable code.",
-    },
-    {
-      index: "04",
-      title: "Launch",
-      text: "Testing, performance tuning, deployment and support after go-live.",
-    },
+  /** "What people come to me with" — dark scroller */
+  needs: [
+    { index: "01", quote: "\u201CMy site is slow and loses visitors\u201D", text: "I rebuild it on Next.js with optimised images and clean code, so pages load fast on any phone." },
+    { index: "02", quote: "\u201CWe have a site, but it\u2019s outdated\u201D", text: "I keep what works, redesign what doesn\u2019t, and launch a modern site that fits your brand today." },
+    { index: "03", quote: "\u201COur current site brings no leads\u201D", text: "I find the step where you lose people and rebuild the page around one clear action." },
+    { index: "04", quote: "\u201CI need a landing page, fast\u201D", text: "A focused one-page site with motion and a clear offer, designed and live in one to two weeks." },
   ],
+
+  pricing: [
+    { title: "Website audit", text: "A review of your current site: speed, UX and conversion, with a clear list of what to fix first.", time: "2\u20133 days", price: "from \u20B93,000" },
+    { title: "Landing page", text: "A single page built for one goal: structure, design, animation and a layout for every screen.", time: "1\u20132 weeks", price: "from \u20B912,000" },
+    { title: "Corporate website", text: "A multi-page company site: services, case studies, team and a simple way for you to update it.", time: "3\u20135 weeks", price: "from \u20B930,000" },
+    { title: "UI/UX design in Figma", text: "A unique design made from scratch: structure, style and a layout ready for development.", time: "1\u20133 weeks", price: "from \u20B910,000" },
+    { title: "Custom software", text: "Web apps, dashboards and internal tools built with Next.js, React and TypeScript.", time: "4+ weeks", price: "On request" },
+  ],
+
+  approach: {
+    statement: [
+      "Goals first, pixels second.",
+      "A pretty page won\u2019t solve the problem you came with.",
+      "So I never start with design.",
+    ],
+    phases: [
+      {
+        index: "01",
+        label: "start",
+        steps: [
+          {
+            title: "Getting to know you",
+            text: "We go through the project, business goals and what you expect from the site",
+          },
+          {
+            title: "Research",
+            text: "I study the niche, the competitors and the people who buy from you",
+          },
+        ],
+      },
+      {
+        index: "02",
+        label: "design",
+        steps: [
+          {
+            title: "Structure and UX",
+            text: "I map out the structure and the visitor\u2019s path, then build a prototype",
+          },
+          {
+            title: "Visual concept",
+            text: "I show 2\u20133 style options on the key screens and we pick the best one together",
+          },
+          {
+            title: "UI design",
+            text: "I take the Figma layouts to final, down to the smallest detail",
+          },
+        ],
+      },
+      {
+        index: "03",
+        label: "build and launch",
+        steps: [
+          {
+            title: "Build",
+            text: "I turn the design into clean Next.js and React code, add motion and wire everything up",
+          },
+          {
+            title: "Testing and polish",
+            text: "I test every page and screen size, fix what\u2019s off and fine-tune the details",
+          },
+          {
+            title: "Launch and support",
+            text: "I launch the site, hand over a guide and stay in touch",
+          },
+        ],
+      },
+    ],
+  },
 
   projects: [
     {
       slug: "commerce-dashboard",
+      headline: "Data you can trust",
+      kicker: "in real time",
       title: "Commerce Analytics Dashboard",
       year: "2025",
       role: "Frontend + Design System",
@@ -103,6 +164,8 @@ export const site = {
     },
     {
       slug: "fintech-onboarding",
+      headline: "Sign-up without drop-off",
+      kicker: "on mobile",
       title: "Fintech Onboarding Flow",
       year: "2024",
       role: "Lead Frontend",
@@ -123,6 +186,8 @@ export const site = {
     },
     {
       slug: "agency-marketing-site",
+      headline: "A brand with presence",
+      kicker: "on the web",
       title: "Creative Agency Marketing Site",
       year: "2023",
       role: "Full Frontend",

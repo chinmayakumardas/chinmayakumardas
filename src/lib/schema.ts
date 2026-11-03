@@ -17,9 +17,9 @@ export const personSchema = {
 
   sameAs: [
     "https://github.com/chinmayakumardas",
-    "https://linkedin.com/in/chinmayakumardas2",
-    "https://x.com/chinmayakmdas",
-    "https://instagram.com/builtbychinmay",
+    "https://linkedin.com/in/itschinmay",
+    "https://x.com/builtbykumar",
+    "https://instagram.com/builtby.kumar",
     "https://youtube.com/@builtbychinmay",
     "https://www.behance.net/chinmaykumard",
   ],

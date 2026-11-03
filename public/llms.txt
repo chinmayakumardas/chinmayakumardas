@@ -35,5 +35,5 @@ Links
 
 Website: https://chinmayakumardas.com
 GitHub: https://github.com/chinmayakumardas
-LinkedIn: https://linkedin.com/in/chinmayakumardas2
-X: https://x.com/chinmayakmdas
+LinkedIn: https://linkedin.com/in/itschinmay
+X: https://x.com/builtbykumar

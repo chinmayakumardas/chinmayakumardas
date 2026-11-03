@@ -1,17 +1,11 @@
-import { Hero } from "@/features/home/sections/Hero";
-import { SelectedWork } from "@/features/home/sections/SelectedWork";
-import { Services } from "@/features/home/sections/Services";
-import { Approach } from "@/features/home/sections/Approach";
-import { ContactCTA } from "@/features/home/sections/ContactCTA";
+import type { Metadata } from "next";
+import { ContactSection } from "@/features/contact/components/ContactSection";
 
-export default function HomePage() {
-  return (
-    <>
-      <Hero />
-      <SelectedWork />
-      <Services />
-      <Approach />
-      <ContactCTA />
-    </>
-  );
+export const metadata: Metadata = {
+  title: "Contact",
+  description: "Tell me about your project — I'll reply with where to start.",
+};
+
+export default function ContactPage() {
+  return <ContactSection />;
 }
