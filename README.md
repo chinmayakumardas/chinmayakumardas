@@ -58,4 +58,4 @@ Defined in `src/app/globals.css` per `docs/design.md`:
 
 - Content: `src/content/site.ts` and `src/content/urls.ts`
 - Contact form: wire `ContactForm` to Formspree / Resend / API route
-- Social & email already sourced from content files
+- Social & email already sourced from content files.
